@@ -13,8 +13,8 @@ jobs:
       matrix:
         python-version: ["3.11", "3.12"]
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install
@@ -29,8 +29,8 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - name: Install ruff
@@ -51,8 +51,8 @@ jobs:
       contents: read
       id-token: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - name: Build distribution
@@ -82,19 +82,36 @@ jobs:
             artifact: skillplay-windows.exe
     runs-on: ${{ matrix.os }}
     permissions:
-      contents: read
+      contents: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - name: Install PyInstaller
         run: python -m pip install --upgrade pip pyinstaller
       - name: Build single binary
         run: python scripts/build_binary.py --method pyinstaller
-      - name: Upload binary
-        uses: actions/upload-artifact@v4
+      - name: Rename binary per OS
+        shell: bash
+        run: |
+          # PyInstaller always names the output `skillplay` (plus .exe on
+          # Windows); disambiguate per-OS so release assets don't collide.
+          if [ "$RUNNER_OS" = "Windows" ]; then
+            mv dist/skillplay.exe dist/skillplay-windows.exe
+          elif [ "$RUNNER_OS" = "macOS" ]; then
+            mv dist/skillplay dist/skillplay-macos
+          else
+            mv dist/skillplay dist/skillplay-linux
+          fi
+      - name: Upload artifact (workflow archive)
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ matrix.artifact }}
           path: dist/skillplay*
           if-no-files-found: error
+      - name: Attach binary to GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/skillplay*
+          fail_on_unmatched_files: true
