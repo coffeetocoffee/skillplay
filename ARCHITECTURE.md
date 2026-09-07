@@ -25,36 +25,62 @@ skillplay/                          # project root
     __main__.py                     # main() -> TUI, or dispatches CLI subcommands
     core/
       __init__.py
-      loader.py                     # pack discovery + YAML parsing (loader.py:49-127)
-      validators.py                 # answer checking, behavior not strings (validators.py:16-150)
-      engine.py                     # session loop, scoring, SRS, weighting (engine.py:23-150)
-      progress.py                   # progress.json load/save, XP math (progress.py:18-58)
-      streak.py                     # daily streak rules (streak.py:9-33)
-      schema.py                     # lightweight pack/challenge schema checks
+      loader.py                     # pack discovery + YAML parsing -> Pack/Challenge dataclasses
+      validators.py                 # answer checking, behavior not strings (pure: (challenge, str) -> Result)
+      engine.py                     # session loop, scoring, weighting, finalize, daily pick
+      progress.py                   # progress.json load/save, XP math, daily backups
+      streak.py                     # daily streak date math (pure)
+      schema.py                     # pack/challenge checks powering validate-packs
       config.py                     # optional config.yaml merge over settings
-      cli.py                        # validate-packs / new-pack / export-stats / leaderboard
+      cli.py                        # all CLI subcommands (validate-packs, exam, demo, sync, pack, …)
+      stats.py                      # per-skill readiness, retention, memory (half-life)
+      goals.py                      # curated goals + weakest-first practice wiring
+      achievements.py               # achievement definitions + unlock checks
+      adaptive.py                   # local logistic model: Adaptive sessions + next_best_challenge
+      generate.py                   # runtime generative challenges (python/js/regex; seeded, deterministic ids)
+      hlr.py                        # V3 half-life regression scheduler (next_due)
+      exam.py                       # V6 mastery exams: build_exam / certify / exam_status (cross-pack pools)
+      skillgraph.py                 # V4 prerequisite DAG: unlock / frontier logic
+      capstone.py                   # V2 capstone packs; portfolio artifact assembly
+      mentor.py                     # V7 mentor explanations (local rule-based + optional LLM backends)
+      sync.py                       # V5 encrypted progress sync (Fernet; server endpoints)
+      registry.py                   # community pack registry (bundle / publish / rate) + bundled index
+      share.py                      # shareable stats (Markdown + SVG card)
+      i18n.py                       # en/es UI catalog + active-language lookup
+      demo.py                       # V9 zero-install web demo (stdlib http.server)
+      leaderboard_server.py         # opt-in leaderboard HTTP server (boards, profiles, /sync, /u/)
+      sound.py                      # optional beep
+      telemetry.py                  # opt-in telemetry aggregates
+      registry_index.json           # bundled community-registry index
     tui/
       __init__.py
-      app.py                        # HomeScreen / PlayScreen / SummaryScreen / StatsScreen / SkillPlayApp
-    packs/
-      sql-basics/      (15 challenges)
-      regex-101/       (15 challenges, regex_tester)
-      git-basics/      (10 challenges, exact + multiple_choice)
-      fix-bug/         (4 challenges, test_cases / python)
-      fix-bug-js/      (3 challenges, test_cases / js via node)
-      css-basics/      (6 challenges, exact + multiple_choice)
-      shell-basics/    (6 challenges, exact)
-      http-rest/       (6 challenges, exact + multiple_choice)
-      data-structures/ (4 challenges, test_cases / python)
-      algorithms/      (4 challenges, test_cases / python)
+      app.py                          # SkillPlayApp + all screens: Home, Play, Summary, Stats, Goals,
+                                      # Achievements, Community, Config, Exam, Path, Capstone
+    packs/                            # 13 packs · 110 challenges · 9 skills
+      sql-basics/        (15 challenges, sql_result; es i18n; teaching-order DAG)
+      regex-101/         (15 challenges, regex_tester)
+      algorithms/        (12 challenges, test_cases + freeform / python; prerequisite DAG)
+      git-basics/        (10 challenges, exact + multiple_choice; prerequisite DAG)
+      data-structures/   (10 challenges, test_cases + freeform / python; es i18n; prerequisite DAG)
+      css-basics/        (9 challenges, exact + multiple_choice; tier-3 challenges)
+      http-rest/         (9 challenges, exact + multiple_choice; tier-3 challenges)
+      shell-basics/      (9 challenges, exact; tier-3 challenges)
+      py-stdlib/         (8 challenges, freeform + test_cases / python; prerequisite DAG)
+      fix-bug/           (4 challenges, test_cases / python)
+      fix-bug-js/        (3 challenges, test_cases / js via node)
+      freeform-intro/    (3 challenges, freeform / python)
+      mini-cli/          (3 challenges, freeform / python; capstone pack)
       schemas/
         pack.schema.json
         challenge.schema.json
+
   tests/
     smoke_core.py                   # loader/validators/engine/streak checks (isolated tmp data dir)
     smoke_tui.py                    # headless Textual E2E: Home→Play→retry→Summary→Home
     conftest.py                     # tmp-data-dir fixture + pack fixtures
-    test_validators.py              # pytest: per-validator + engine unit tests
+    test_*.py / *_test.py           # pytest suites: validators, hardening, features, intelligence,
+                                    # exam, hlr, skillgraph, capstone, mentor, sync, community,
+                                    # registry, leaderboard server, v9 (i18n + demo + sandbox)
 ```
 
 Module responsibilities:
@@ -68,7 +94,7 @@ Module responsibilities:
 | `core/streak` | pure date math for streaks | disk, UI |
 | `core/schema` | `validate_pack(pack, strict) -> (errors, warnings)` — required keys, known modes, mode-specific fields, duplicate ids/prompts, over-broad regex, reference self-validation | disk, UI |
 | `core/config` | optional `config.yaml` merge over `settings` | disk |
-| `core/cli` | `validate-packs` / `export-stats` / `leaderboard` subcommands | UI |
+| `core/cli` | all CLI subcommands (`validate-packs`, `exam`, `demo`, `sync`, `share-stats`, `serve-leaderboard`, …) | UI |
 | `tui/app` | screens, input, rendering, wiring engine calls | YAML parsing, SQL |
 
 Dependency direction: `tui → core.{engine,loader,progress,streak}`; `engine → validators, progress, streak`. Validators and streak are leaf modules (no internal imports).
