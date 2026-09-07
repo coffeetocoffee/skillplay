@@ -110,6 +110,11 @@ def _multiple_choice(challenge, user_input: str) -> Result:
 
 _TEST_TIMEOUT = 5  # seconds per evaluation
 
+# Child-process resource caps (POSIX). The wall-clock guard is the 5s timeout in
+# _TEST_TIMEOUT; these add a CPU-time and memory ceiling for defense in depth.
+_CHILD_CPU_SECS = 5
+_CHILD_AS_MB = 512
+
 
 def test_cases_runtime_available(lang: str) -> bool:
     lang = (lang or "python").lower()
@@ -201,7 +206,7 @@ def _write_temp(ext: str, content: str) -> str:
     return path
 
 
-def _exec_file(path: str, cmd_base: list[str]) -> Result:
+def _exec_file(path: str, cmd_base: list[str], as_cap_mb: int = _CHILD_AS_MB) -> Result:
     cmd = [*cmd_base, path]
     try:
         if sys.platform == "win32":
@@ -210,12 +215,15 @@ def _exec_file(path: str, cmd_base: list[str]) -> Result:
         else:
             # G8: preexec_fn caps the child's CPU time and address space so a
             # generated or student program can't hog the machine (POSIX-only).
+            # as_cap_mb=0 skips the address-space cap: required for runtimes
+            # (V8/node) that legitimately reserve GBs of *virtual* memory at
+            # startup — RLIMIT_AS counts virtual, not resident, memory.
             proc = subprocess.run(
                 cmd,
                 capture_output=True,
                 text=True,
                 timeout=_TEST_TIMEOUT,
-                preexec_fn=_sandbox_preexec,
+                preexec_fn=lambda: _sandbox_preexec(as_cap_mb),
             )
             returncode, stdout, stderr = proc.returncode, proc.stdout, proc.stderr
     except subprocess.TimeoutExpired:
@@ -237,23 +245,21 @@ def _exec_file(path: str, cmd_base: list[str]) -> Result:
     return Result(bool(result.get("passed", False)), result.get("detail", ""))
 
 
-# Child-process resource caps (POSIX). The wall-clock guard is the 5s timeout in
-# _TEST_TIMEOUT; these add a CPU-time and memory ceiling for defense in depth.
-_CHILD_CPU_SECS = 5
-_CHILD_AS_MB = 512
-
-
-def _sandbox_preexec() -> None:
+def _sandbox_preexec(as_cap_mb: int = _CHILD_AS_MB) -> None:
     """POSIX-only: bound CPU time and address space of the spawned child.
 
     Best-effort — any failure (unsupported limit, permission) is silently
-    ignored so grading is never blocked by the sandbox."""
+    ignored so grading is never blocked by the sandbox. as_cap_mb=0 leaves
+    the address space uncapped (needed by V8/node, which reserve GBs of
+    virtual memory up front; its resident heap is capped via
+    --max-old-space-size instead)."""
     try:
         import resource as _res
 
         _res.setrlimit(_res.RLIMIT_CPU, (_CHILD_CPU_SECS, _CHILD_CPU_SECS))
-        as_bytes = _CHILD_AS_MB * 1024 * 1024
-        _res.setrlimit(_res.RLIMIT_AS, (as_bytes, as_bytes))
+        if as_cap_mb:
+            as_bytes = as_cap_mb * 1024 * 1024
+            _res.setrlimit(_res.RLIMIT_AS, (as_bytes, as_bytes))
     except Exception:
         pass
 
@@ -473,7 +479,10 @@ def _run_js(node: str, setup: str, code: str, func: str, cases: list) -> Result:
         .replace("__CASES__", json.dumps(cases))
     )
     path = _write_temp(".js", module)
-    return _exec_file(path, [node, "--max-old-space-size=256"])
+    # No RLIMIT_AS for node: V8 reserves GBs of virtual memory (CodeRange,
+    # pointer-compression cage) at startup and dies under a low RLIMIT_AS.
+    # Resident heap stays capped via --max-old-space-size; CPU via the sandbox.
+    return _exec_file(path, [node, "--max-old-space-size=256"], as_cap_mb=0)
 
 
 def _sql_result(challenge, user_input: str) -> Result:
