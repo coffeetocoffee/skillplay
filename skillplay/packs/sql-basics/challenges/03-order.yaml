@@ -1,4 +1,5 @@
 id: sql-order-01
+prerequisites: [sql-select-01]
 skill: sql
 title: Order results
 topic: order_by
@@ -22,3 +23,12 @@ hints:
   - "ORDER BY age DESC sorts descending."
 explanation: |
   `ORDER BY col DESC` sorts rows; ASC (default) is ascending.
+translations:
+  es:
+    title: Ordena los resultados
+    prompt: |
+      Lista todos los usuarios ordenados por edad, del mayor al menor.
+    hints:
+      - "ORDER BY age DESC ordena en descendente."
+    explanation: |
+      `ORDER BY col DESC` ordena las filas; ASC (predeterminado) es ascendente.

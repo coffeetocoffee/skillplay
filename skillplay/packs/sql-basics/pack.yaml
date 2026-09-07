@@ -1,6 +1,6 @@
 id: sql-basics
 name: SQL Basics
-version: 0.1.0
+version: 0.2.0
 author: core
 skill: sql
 description: SELECT, WHERE, DISTINCT, JOIN, GROUP BY, HAVING, subqueries — learn SQL by doing.
@@ -8,3 +8,7 @@ difficulty: beginner
 schema_version: 1
 tags: [sql, beginner]
 entry: challenges/*.yaml
+translations:
+  es:
+    name: Fundamentos de SQL
+    description: SELECT, WHERE, DISTINCT, JOIN, GROUP BY, HAVING, subconsultas — aprende SQL practicando.

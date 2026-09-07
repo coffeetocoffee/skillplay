@@ -1,4 +1,5 @@
 id: sql-like-01
+prerequisites: [sql-where-01]
 skill: sql
 title: Pattern match with LIKE
 topic: where
@@ -22,3 +23,12 @@ hints:
   - "'a%' means 'a' followed by any sequence of characters."
 explanation: |
   `LIKE 'a%'` matches strings beginning with 'a'; `%` is a wildcard for any run of chars.
+translations:
+  es:
+    title: Coincidencia de patrones con LIKE
+    prompt: |
+      Devuelve los nombres de los usuarios cuyo nombre empieza por la letra 'a'. Usa LIKE.
+    hints:
+      - "'a%' significa 'a' seguida de cualquier secuencia de caracteres."
+    explanation: |
+      `LIKE 'a%'` coincide con las cadenas que empiezan por 'a'; `%` es un comodín para cualquier tanda de caracteres.

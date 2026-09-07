@@ -1,4 +1,5 @@
 id: sql-distinct-01
+prerequisites: [sql-select-01]
 skill: sql
 title: Remove duplicates with DISTINCT
 topic: distinct
@@ -22,3 +23,12 @@ hints:
   - "DISTINCT collapses duplicate rows in the result set."
 explanation: |
   `SELECT DISTINCT` returns each unique value only once.
+translations:
+  es:
+    title: Elimina duplicados con DISTINCT
+    prompt: |
+      Devuelve los tonos distintos de la tabla `colors`, sin duplicados.
+    hints:
+      - "DISTINCT colapsa las filas duplicadas del conjunto de resultados."
+    explanation: |
+      `SELECT DISTINCT` devuelve cada valor único una sola vez.

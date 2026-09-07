@@ -1,0 +1,32 @@
+id: alg-min-01
+prerequisites: [alg-sum-01]
+title: Minimum of a list
+topic: search
+difficulty: 2
+xp: 20
+type: fix_bug
+prompt: |
+  `find_min(lst)` should return the smallest element, but it always returns the
+  first one. Fix it so that find_min([1, 5, 3]) == 1.
+
+      def find_min(lst):
+          return lst[0]   # BUG: ignores every other element
+answer:
+  reference_code: |
+    def find_min(lst):
+        return min(lst)
+validation:
+  mode: test_cases
+  lang: python
+  function: find_min
+  test_cases:
+    - args: [[1, 5, 3]]
+      expected: 1
+    - args: [[-1, -2, -3]]
+      expected: -3
+    - args: [[0]]
+      expected: 0
+hints:
+  - "Python's built-in `min` already does this."
+explanation: |
+  `min(lst)` returns the least element of the list.

@@ -1,0 +1,44 @@
+id: ds-dict-01
+prerequisites: [ds-count-01]
+title: Word lengths as a dict
+topic: dicts
+difficulty: 2
+xp: 20
+type: fix_bug
+prompt: |
+  `word_lengths(words)` should return a dict mapping each word to its length,
+  but it always returns an empty dict. Fix it so that
+  word_lengths(["a", "bb"]) == {"a": 1, "bb": 2}.
+
+      def word_lengths(words):
+          return {}   # BUG: never fills anything in
+answer:
+  reference_code: |
+    def word_lengths(words):
+        return {w: len(w) for w in words}
+validation:
+  mode: test_cases
+  lang: python
+  function: word_lengths
+  test_cases:
+    - args: [["a", "bb"]]
+      expected: {"a": 1, "bb": 2}
+    - args: [[]]
+      expected: {}
+    - args: [["abc"]]
+      expected: {"abc": 3}
+hints:
+  - "A dict comprehension `{w: len(w) for w in words}` builds the mapping in one line."
+explanation: |
+  Dicts map keys to values; here each word (key) maps to its length (value).
+translations:
+  es:
+    title: Longitudes de palabras en un dict
+    prompt: |
+      `word_lengths(words)` debe devolver un dict que asigne cada palabra a su
+      longitud, pero siempre devuelve un dict vacío. Corrígelo para que
+      word_lengths(["a", "bb"]) == {"a": 1, "bb": 2}.
+    hints:
+      - "Una comprensión de dict `{w: len(w) for w in words}` construye el mapeo en una línea."
+    explanation: |
+      Los dicts mapean claves a valores; aquí cada palabra (clave) se mapea a su longitud (valor).

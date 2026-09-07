@@ -1,0 +1,52 @@
+id: ds-queue-01
+prerequisites: [ds-stack-01]
+title: Rotate a queue
+topic: queues
+difficulty: 2
+xp: 20
+type: fix_bug
+prompt: |
+  `rotate(items, k)` should return the list rotated right by k positions
+  (the last k elements wrap to the front), but it returns the list unchanged.
+  Fix it so that rotate([1, 2, 3, 4], 1) == [4, 1, 2, 3].
+
+      def rotate(items, k):
+          return list(items)   # BUG: no rotation happens
+answer:
+  reference_code: |
+    from collections import deque
+
+    def rotate(items, k):
+        d = deque(items)
+        d.rotate(k)
+        return list(d)
+validation:
+  mode: test_cases
+  lang: python
+  function: rotate
+  test_cases:
+    - args: [[1, 2, 3, 4], 1]
+      expected: [4, 1, 2, 3]
+    - args: [[1, 2, 3, 4], 2]
+      expected: [3, 4, 1, 2]
+    - args: [[1, 2, 3], 3]
+      expected: [1, 2, 3]
+    - args: [[], 2]
+      expected: []
+hints:
+  - "`collections.deque` has a built-in `rotate(k)` method; positive k rotates right."
+explanation: |
+  A deque is a double-ended queue; `rotate(k)` walks k elements from the back
+  to the front (for positive k) in O(k).
+translations:
+  es:
+    title: Rota una cola
+    prompt: |
+      `rotate(items, k)` debe devolver la lista rotada k posiciones a la derecha
+      (los últimos k elementos pasan al frente), pero devuelve la lista sin cambios.
+      Corrígelo para que rotate([1, 2, 3, 4], 1) == [4, 1, 2, 3].
+    hints:
+      - "`collections.deque` tiene un método integrado `rotate(k)`; con k positivo rota a la derecha."
+    explanation: |
+      Un deque es una cola de doble extremo; `rotate(k)` mueve k elementos del final
+      al principio (con k positivo) en O(k).

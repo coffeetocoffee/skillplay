@@ -32,7 +32,10 @@ def test_pack_translations_parsed_and_applied(packs):
     assert ds.translations and "es" in ds.translations
     i18n.set_language("es")
     assert ds.localized("name") == "Estructuras de datos"
-    assert "Operaciones básicas" in ds.localized("description")
+    assert "helpers" in ds.localized("description")
+    sql = next(p for p in packs if p.id == "sql-basics")
+    assert sql.localized("name") == "Fundamentos de SQL"
+    assert "subconsultas" in sql.localized("description")
     i18n.set_language("en")
 
 

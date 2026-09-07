@@ -1,4 +1,5 @@
 id: sql-or-01
+prerequisites: [sql-where-01]
 skill: sql
 title: Combine conditions with OR
 topic: where
@@ -22,3 +23,12 @@ hints:
   - "Use OR to require at least one condition to be true."
 explanation: |
   `WHERE a OR b` keeps rows where either predicate holds.
+translations:
+  es:
+    title: Combina condiciones con OR
+    prompt: |
+      Devuelve los nombres de los usuarios mayores de 38 años O que viven en 'paris'.
+    hints:
+      - "Usa OR para exigir que al menos una condición sea verdadera."
+    explanation: |
+      `WHERE a OR b` conserva las filas donde cualquiera de los dos predicados se cumple.

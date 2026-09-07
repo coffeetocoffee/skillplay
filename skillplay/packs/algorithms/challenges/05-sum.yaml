@@ -1,0 +1,32 @@
+id: alg-sum-01
+prerequisites: []
+title: Sum of a list
+topic: loops
+difficulty: 1
+xp: 15
+type: fix_bug
+prompt: |
+  `total(nums)` should return the sum of the numbers in `nums`, but it always
+  returns 0. Fix it so that total([1, 2, 3]) == 6.
+
+      def total(nums):
+          return 0   # BUG: never adds anything
+answer:
+  reference_code: |
+    def total(nums):
+        return sum(nums)
+validation:
+  mode: test_cases
+  lang: python
+  function: total
+  test_cases:
+    - args: [[1, 2, 3]]
+      expected: 6
+    - args: [[]]
+      expected: 0
+    - args: [[-1, 1]]
+      expected: 0
+hints:
+  - "Python's built-in `sum` already adds every element of a list."
+explanation: |
+  `sum(nums)` adds every element of the list; `sum([])` is 0.

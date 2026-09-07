@@ -1,4 +1,5 @@
 id: sql-join-01
+prerequisites: [sql-select-01]
 skill: sql
 title: Join two tables
 topic: join
@@ -25,3 +26,13 @@ hints:
   - "JOIN ... ON links rows where the foreign key matches the primary key."
 explanation: |
   An inner JOIN pairs each book with the author whose id equals author_id.
+translations:
+  es:
+    title: Une dos tablas
+    prompt: |
+      Devuelve cada título de libro junto con el nombre de su autor, uniendo la
+      tabla `books` con la tabla `authors` por author_id.
+    hints:
+      - "JOIN ... ON vincula filas donde la clave foránea coincide con la clave primaria."
+    explanation: |
+      Un JOIN interno empareja cada libro con el autor cuyo id es igual a author_id.

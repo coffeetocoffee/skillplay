@@ -1,0 +1,38 @@
+id: stdlib-collections-01
+prerequisites: [stdlib-json-01]
+title: Count with Counter
+topic: collections
+difficulty: 2
+xp: 20
+type: fix_bug
+prompt: |
+  `tally(items)` should return a dict of how many times each item appears,
+  using the standard library's Counter, but it returns an empty dict. Fix it
+  so that tally(["a", "b", "a"]) == {"a": 2, "b": 1}.
+
+      from collections import Counter
+
+      def tally(items):
+          return {}   # BUG: ignores Counter
+answer:
+  reference_code: |
+    from collections import Counter
+
+    def tally(items):
+        return dict(Counter(items))
+validation:
+  mode: test_cases
+  lang: python
+  function: tally
+  test_cases:
+    - args: [["a", "b", "a"]]
+      expected: {"a": 2, "b": 1}
+    - args: [[]]
+      expected: {}
+    - args: [[3, 3, 3]]
+      expected: {3: 3}
+hints:
+  - "`Counter(items) builds the counts; wrap it with dict() to satisfy the comparison."
+explanation: |
+  `collections.Counter` counts hashable items in one pass; `dict(counter)`
+  gives a plain dict of item -> count.

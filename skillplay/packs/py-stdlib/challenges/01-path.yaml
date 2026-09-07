@@ -1,0 +1,44 @@
+id: stdlib-path-01
+prerequisites: []
+title: Portable path parsing
+topic: pathlib
+difficulty: 2
+xp: 20
+type: fix_bug
+prompt: |
+  `describe(path_str)` should return [directory, filename, extension] for a
+  POSIX-style path string, using `pathlib.PurePosixPath` (portable on every
+  OS) — but it returns wrong values. Fix it so that
+  describe("docs/report.txt") == ["docs", "report.txt", ".txt"].
+
+      from pathlib import PurePosixPath
+
+      def describe(path_str):
+          p = PurePosixPath(path_str)
+          return [p.stem, p.name, p.suffix]   # BUG: wrong order / wrong fields
+answer:
+  reference_code: |
+    from pathlib import PurePosixPath
+
+    def describe(path_str):
+        p = PurePosixPath(path_str)
+        return [str(p.parent), p.name, p.suffix]
+validation:
+  mode: test_cases
+  lang: python
+  function: describe
+  test_cases:
+    - args: ["docs/report.txt"]
+      expected: ["docs", "report.txt", ".txt"]
+    - args: ["notes.md"]
+      expected: [".", "notes.md", ".md"]
+    - args: ["a/b/c/archive.tar.gz"]
+      expected: ["a/b/c", "archive.tar.gz", ".gz"]
+hints:
+  - "`PurePosixPath.parent` is the directory part, `.name` the full filename, `.suffix` the extension."
+  - "`p.parent` is a path object — wrap it with str() to compare as a string."
+  - "Only the last suffix counts: archive.tar.gz ends in `.gz`."
+explanation: |
+  `pathlib` splits a path into `.parent` (directory), `.name` (filename) and
+  `.suffix` (last extension) without manual string slicing. `PurePosixPath`
+  parses with `/` rules on every OS, so results are deterministic.

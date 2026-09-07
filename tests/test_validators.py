@@ -102,7 +102,8 @@ def test_due_today_counts_all_when_fresh(packs):
     prog = pm.default_progress()
     total = sum(len(p.challenges) for p in packs)
     assert eng.count_due_today(packs, prog) == total
-    due = eng.select_due_today(packs, prog, 100)
+    # Limit must cover the whole pool regardless of how much content exists.
+    due = eng.select_due_today(packs, prog, total + 10)
     assert len(due) == total
     assert all(ch.srs_reason for ch in due)
 

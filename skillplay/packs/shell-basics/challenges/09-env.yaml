@@ -1,0 +1,20 @@
+id: sh-env-01
+prerequisites: [sh-status-01]
+title: Export an environment variable
+topic: environment
+difficulty: 3
+xp: 25
+type: exact
+prompt: |
+  Type the command that sets the environment variable API_URL to
+  https://api.example.com so child processes inherit it.
+answer:
+  value: "export API_URL=https://api.example.com"
+validation:
+  mode: exact
+hints:
+  - "`export` marks a shell variable as part of the environment."
+  - "There must be no spaces around the `=` sign."
+explanation: |
+  `export VAR=value` puts the variable into the environment, so commands
+  launched from this shell inherit it.

@@ -1,0 +1,47 @@
+id: stdlib-functools-01
+prerequisites: [stdlib-collections-01]
+title: Cached Fibonacci
+topic: functools
+difficulty: 3
+xp: 25
+type: freeform
+prompt: |
+  The naive recursive `fib(n)` recomputes the same values over and over.
+  Write a function `fast_fib(n)` with the same results but memoized, using
+  `functools.lru_cache`. fast_fib(70) must return promptly. Tests are hidden.
+
+      def fib(n):
+          return n if n < 2 else fib(n - 1) + fib(n - 2)
+starter_code: |
+  from functools import lru_cache
+
+  @lru_cache(maxsize=None)
+  def fast_fib(n):
+      # your code here
+      pass
+answer:
+  reference_code: |
+    from functools import lru_cache
+
+    @lru_cache(maxsize=None)
+    def fast_fib(n):
+        return n if n < 2 else fast_fib(n - 1) + fast_fib(n - 2)
+validation:
+  mode: freeform
+  lang: python
+  function: fast_fib
+  test_cases:
+    - args: [0]
+      expected: 0
+    - args: [1]
+      expected: 1
+    - args: [30]
+      expected: 832040
+    - args: [70]
+      expected: 190392490709135
+hints:
+  - "Keep the same recursive structure — the decorator does the caching."
+  - "Recursive calls must go to the decorated `fast_fib`, not the undecorated `fib`."
+explanation: |
+  `@lru_cache` stores each result; the recursion becomes O(n) because each n
+  is computed once and reused.

@@ -1,4 +1,5 @@
 id: sql-count-01
+prerequisites: [sql-where-01]
 skill: sql
 title: Count rows
 topic: aggregate
@@ -22,3 +23,12 @@ hints:
   - "COUNT(*) counts rows; combine with WHERE."
 explanation: |
   `COUNT(*)` is an aggregate that returns a single count of matching rows.
+translations:
+  es:
+    title: Cuenta las filas
+    prompt: |
+      Cuenta cuántos usuarios son mayores de 30 años.
+    hints:
+      - "COUNT(*) cuenta filas; combínalo con WHERE."
+    explanation: |
+      `COUNT(*)` es un agregado que devuelve un único recuento de las filas que coinciden.

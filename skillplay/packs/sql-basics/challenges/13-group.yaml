@@ -1,4 +1,5 @@
 id: sql-group-01
+prerequisites: [sql-join-01]
 skill: sql
 title: Aggregate per group with GROUP BY
 topic: aggregate
@@ -25,3 +26,13 @@ hints:
   - "GROUP BY author collapses rows; COUNT(*) counts each group."
 explanation: |
   `GROUP BY authors.name` forms one group per author; COUNT(*) counts its books.
+translations:
+  es:
+    title: Agrega por grupo con GROUP BY
+    prompt: |
+      Para cada autor, cuenta cuántos libros ha escrito. Devuelve el nombre
+      del autor y el recuento de libros.
+    hints:
+      - "GROUP BY autor colapsa las filas; COUNT(*) cuenta cada grupo."
+    explanation: |
+      `GROUP BY authors.name` forma un grupo por autor; COUNT(*) cuenta sus libros.

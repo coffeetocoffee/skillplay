@@ -1,0 +1,41 @@
+id: stdlib-datetime-01
+prerequisites: []
+title: Weekend detector
+topic: datetime
+difficulty: 2
+xp: 20
+type: fix_bug
+prompt: |
+  `is_weekend(iso_date)` should return True when the ISO-8601 date string
+  (like "2026-09-05") falls on a Saturday or Sunday, but it always returns
+  False. Fix it so that is_weekend("2026-09-05") == True.
+
+      from datetime import date
+
+      def is_weekend(iso_date):
+          return False   # BUG: never checks the weekday
+answer:
+  reference_code: |
+    from datetime import date
+
+    def is_weekend(iso_date):
+        return date.fromisoformat(iso_date).weekday() >= 5
+validation:
+  mode: test_cases
+  lang: python
+  function: is_weekend
+  test_cases:
+    - args: ["2026-09-05"]
+      expected: true
+    - args: ["2026-09-06"]
+      expected: true
+    - args: ["2026-09-07"]
+      expected: false
+    - args: ["2026-01-01"]
+      expected: false
+hints:
+  - "`date.fromisoformat(text)` parses a YYYY-MM-DD string into a date."
+  - "`.weekday()` returns 0 for Monday through 6 for Sunday, so the weekend is >= 5."
+explanation: |
+  `date.fromisoformat(...).weekday()` maps Monday..Sunday to 0..6; Saturday
+  and Sunday are the days with weekday >= 5.

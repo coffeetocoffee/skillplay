@@ -1,0 +1,60 @@
+id: ds-stack-01
+prerequisites: [ds-reverse-01]
+title: Balanced brackets (stack)
+topic: stacks
+difficulty: 3
+xp: 25
+type: freeform
+prompt: |
+  Write a function `is_balanced(s)` that returns True when every bracket in
+  `s` — one of `()`, `[]`, `{}` — opens and closes in a properly nested way,
+  else False. Use a stack: push openers, pop on closers. Tests are hidden.
+starter_code: |
+  def is_balanced(s):
+      # your code here
+      pass
+answer:
+  reference_code: |
+    def is_balanced(s):
+        pairs = {")": "(", "]": "[", "}": "{"}
+        stack = []
+        for ch in s:
+            if ch in "([{":
+                stack.append(ch)
+            elif ch in pairs:
+                if not stack or stack.pop() != pairs[ch]:
+                    return False
+        return not stack
+validation:
+  mode: freeform
+  lang: python
+  function: is_balanced
+  test_cases:
+    - args: ["()[]{}"]
+      expected: true
+    - args: ["([)]"]
+      expected: false
+    - args: ["(("]
+      expected: false
+    - args: [""]
+      expected: true
+hints:
+  - "A closer must match the most recent unmatched opener — that's the top of the stack."
+  - "The string is balanced only if the stack is empty at the end."
+explanation: |
+  Pushing openers and popping on closers makes the stack enforce proper
+  nesting; a mismatched pop or leftovers both mean unbalanced.
+translations:
+  es:
+    title: Corchetes balanceados (pila)
+    prompt: |
+      Escribe una función `is_balanced(s)` que devuelva True cuando cada
+      corchete de `s` — uno de `()`, `[]`, `{}` — se abre y se cierra de forma
+      correctamente anidada, y False en caso contrario. Usa una pila: apila
+      aperturas, desapila en cierres.
+    hints:
+      - "Un cierre debe coincidir con la apertura sin cerrar más reciente — la cima de la pila."
+      - "La cadena está balanceada solo si la pila queda vacía al final."
+    explanation: |
+      Apilar aperturas y desapilar en cierres hace que la pila imponga el
+      anidamiento correcto; un desapilado erróneo o restos en la pila indican desbalance.

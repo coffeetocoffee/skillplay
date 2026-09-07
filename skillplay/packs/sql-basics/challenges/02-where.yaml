@@ -1,4 +1,5 @@
 id: sql-where-01
+prerequisites: [sql-select-01]
 skill: sql
 title: Filter with WHERE
 topic: where
@@ -22,3 +23,12 @@ hints:
   - "SELECT name FROM users WHERE age > 30"
 explanation: |
   `WHERE` filters rows before they are projected.
+translations:
+  es:
+    title: Filtra con WHERE
+    prompt: |
+      Devuelve los nombres de los usuarios mayores de 30 años.
+    hints:
+      - "SELECT name FROM users WHERE age > 30"
+    explanation: |
+      `WHERE` filtra las filas antes de proyectarlas.

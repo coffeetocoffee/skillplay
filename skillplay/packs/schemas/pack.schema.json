@@ -25,6 +25,18 @@
         "lang": {"type": "string", "enum": ["python", "javascript"]},
         "run": {"type": "string", "description": "Optional command to run the built artifact"}
       }
+    },
+    "translations": {
+      "type": "object",
+      "description": "V9: per-language overrides for name/description, keyed by language code (e.g. es).",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "name": {"type": "string"},
+          "description": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
     }
   },
   "additionalProperties": false

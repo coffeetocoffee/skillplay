@@ -1,0 +1,38 @@
+id: alg-wordcount-01
+prerequisites: [alg-sum-01]
+title: Count the words
+topic: hash-map
+difficulty: 2
+xp: 20
+type: freeform
+prompt: |
+  Write a function `word_count(words)` that returns a dict mapping each word to
+  the number of times it appears. Hidden tests check several inputs.
+starter_code: |
+  def word_count(words):
+      # your code here
+      pass
+answer:
+  reference_code: |
+    def word_count(words):
+        counts = {}
+        for w in words:
+            counts[w] = counts.get(w, 0) + 1
+        return counts
+validation:
+  mode: freeform
+  lang: python
+  function: word_count
+  test_cases:
+    - args: [["a", "b", "a"]]
+      expected: {"a": 2, "b": 1}
+    - args: [[]]
+      expected: {}
+    - args: [["x", "x", "x"]]
+      expected: {"x": 3}
+hints:
+  - "Use a dict; `counts.get(w, 0)` reads a word's count or 0 if unseen."
+  - "One pass over the words is enough — no sorting needed."
+explanation: |
+  The hash-map pattern: iterate once, incrementing each word's counter with
+  `counts.get(w, 0) + 1`.

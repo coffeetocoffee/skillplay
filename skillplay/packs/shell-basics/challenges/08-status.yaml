@@ -1,0 +1,19 @@
+id: sh-status-01
+prerequisites: [sh-pipe-01]
+title: Check the last exit code
+topic: exit-codes
+difficulty: 3
+xp: 25
+type: exact
+prompt: |
+  Type the command (a shell variable expansion) that prints the exit code of
+  the most recently executed command.
+answer:
+  value: "echo $?"
+validation:
+  mode: exact
+hints:
+  - "The special parameter `?` holds the exit status of the last command."
+explanation: |
+  `echo $?` prints the previous command's exit status: 0 means success,
+  anything else is a failure code.

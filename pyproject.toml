@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "skillplay"
-version = "1.1.2"
+version = "1.2.0"
 description = "Learn-by-Play TUI — learn dev skills by playing bite-sized challenges"
 requires-python = ">=3.11"
 dependencies = [

@@ -1,0 +1,48 @@
+id: ds-set-01
+prerequisites: [ds-dict-01]
+title: Common elements
+topic: sets
+difficulty: 2
+xp: 20
+type: fix_bug
+prompt: |
+  `common(a, b)` should return a sorted list of the elements that appear in
+  BOTH lists, but it always returns an empty list. Fix it so that
+  common([1, 2, 3], [2, 3, 4]) == [2, 3].
+
+      def common(a, b):
+          return []   # BUG: never compares anything
+answer:
+  reference_code: |
+    def common(a, b):
+        return sorted(set(a) & set(b))
+validation:
+  mode: test_cases
+  lang: python
+  function: common
+  test_cases:
+    - args: [[1, 2, 3], [2, 3, 4]]
+      expected: [2, 3]
+    - args: [["a"], ["b"]]
+      expected: []
+    - args: [[], [1]]
+      expected: []
+hints:
+  - "`set(a) & set(b)` is the intersection of the two sets."
+  - "Sets are unordered — `sorted()` gives a deterministic list."
+explanation: |
+  Set intersection keeps only the elements present in both; sorting makes the
+  result a stable list.
+translations:
+  es:
+    title: Elementos comunes
+    prompt: |
+      `common(a, b)` debe devolver una lista ordenada con los elementos que
+      aparecen en AMBAS listas, pero siempre devuelve una lista vacía.
+      Corrígelo para que common([1, 2, 3], [2, 3, 4]) == [2, 3].
+    hints:
+      - "`set(a) & set(b)` es la intersección de los dos conjuntos."
+      - "Los conjuntos no tienen orden — `sorted()` devuelve una lista determinista."
+    explanation: |
+      La intersección de conjuntos conserva solo los elementos presentes en ambos;
+      ordenar produce una lista estable.

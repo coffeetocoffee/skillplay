@@ -1,0 +1,38 @@
+id: alg-anagram-01
+prerequisites: [alg-wordcount-01]
+title: Anagram check
+topic: hash-map
+difficulty: 2
+xp: 20
+type: freeform
+prompt: |
+  Write a function `is_anagram(a, b)` that returns True when the strings `a`
+  and `b` contain exactly the same letters (same multiset of characters),
+  else False. Tests are hidden.
+starter_code: |
+  def is_anagram(a, b):
+      # your code here
+      pass
+answer:
+  reference_code: |
+    def is_anagram(a, b):
+        return sorted(a) == sorted(b)
+validation:
+  mode: freeform
+  lang: python
+  function: is_anagram
+  test_cases:
+    - args: ["listen", "silent"]
+      expected: true
+    - args: ["hello", "world"]
+      expected: false
+    - args: ["aab", "aba"]
+      expected: true
+    - args: ["", ""]
+      expected: true
+hints:
+  - "Two strings are anagrams when sorting their characters produces equal sequences."
+  - "Alternatively, count characters of both strings and compare the counts."
+explanation: |
+  `sorted(a) == sorted(b)` orders both multisets of characters, so equal
+  sorted sequences mean the same letters with the same counts.

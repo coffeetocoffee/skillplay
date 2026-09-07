@@ -1,4 +1,5 @@
 id: sql-limit-01
+prerequisites: [sql-order-01]
 skill: sql
 title: Limit rows
 topic: limit
@@ -22,3 +23,12 @@ hints:
   - "Add LIMIT 2 at the end of the query."
 explanation: |
   `LIMIT n` caps the number of rows returned.
+translations:
+  es:
+    title: Limita las filas
+    prompt: |
+      Devuelve solo los dos primeros usuarios (en cualquier orden). Usa LIMIT.
+    hints:
+      - "Añade LIMIT 2 al final de la consulta."
+    explanation: |
+      `LIMIT n` limita el número de filas devueltas.

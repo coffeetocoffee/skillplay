@@ -1,0 +1,19 @@
+id: http-auth2-01
+prerequisites: [http-auth-01]
+title: The Authorization header value
+topic: auth
+difficulty: 3
+xp: 25
+type: exact
+prompt: |
+  Type the full Authorization header (name and value) that sends a bearer
+  token with the value `t0k3n`.
+answer:
+  value: "Authorization: Bearer t0k3n"
+validation:
+  mode: exact
+hints:
+  - "The scheme name comes first, then the credential: `<scheme> <token>`."
+  - "The scheme for token credentials is `Bearer`."
+explanation: |
+  Token credentials use the `Bearer` scheme: `Authorization: Bearer <token>`.

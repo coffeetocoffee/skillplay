@@ -1,4 +1,5 @@
 id: sql-select-01
+prerequisites: []
 skill: sql
 title: Select all columns
 topic: select
@@ -22,3 +23,12 @@ hints:
   - "Use the asterisk to mean 'all columns'."
 explanation: |
   `SELECT * FROM users` projects every column for every row.
+translations:
+  es:
+    title: Selecciona todas las columnas
+    prompt: |
+      Devuelve todas las columnas y filas de la tabla `users`.
+    hints:
+      - "Usa el asterisco para indicar 'todas las columnas'."
+    explanation: |
+      `SELECT * FROM users` proyecta todas las columnas de todas las filas.

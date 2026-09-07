@@ -1,0 +1,37 @@
+id: stdlib-json-01
+prerequisites: []
+title: Parse JSON
+topic: json
+difficulty: 1
+xp: 15
+type: fix_bug
+prompt: |
+  `parse(text)` should turn a JSON string into Python data with the standard
+  library, but it returns None. Fix it so that parse('{"a": 1}') == {"a": 1}.
+
+      import json
+
+      def parse(text):
+          return None   # BUG: never parses anything
+answer:
+  reference_code: |
+    import json
+
+    def parse(text):
+        return json.loads(text)
+validation:
+  mode: test_cases
+  lang: python
+  function: parse
+  test_cases:
+    - args: ['{"a": 1}']
+      expected: {"a": 1}
+    - args: ["[1, 2]"]
+      expected: [1, 2]
+    - args: ["\"hi\""]
+      expected: "hi"
+hints:
+  - "`json.loads` parses a JSON *string*; `json.load` reads a file object."
+explanation: |
+  `json.loads(text)` deserializes JSON text into Python objects (dicts,
+  lists, strings, numbers...).

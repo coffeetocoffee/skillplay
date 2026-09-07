@@ -1,4 +1,5 @@
 id: sql-in-01
+prerequisites: [sql-or-01]
 skill: sql
 title: Match a set with IN
 topic: where
@@ -22,3 +23,12 @@ hints:
   - "IN (...) is shorthand for several OR equality checks."
 explanation: |
   `WHERE col IN (a, b, c)` matches rows whose value is in the list.
+translations:
+  es:
+    title: Coincide un conjunto con IN
+    prompt: |
+      Devuelve los nombres de los usuarios cuya ciudad es 'paris' o 'london'.
+    hints:
+      - "IN (...) es una forma abreviada de varias comprobaciones de igualdad con OR."
+    explanation: |
+      `WHERE col IN (a, b, c)` coincide con las filas cuyo valor está en la lista.

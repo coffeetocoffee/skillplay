@@ -56,19 +56,20 @@ skillplay context --file app.py        # suggest a pack for the file you're edit
 
 ## What's included
 
-12 built-in packs · **79 challenges** across 9 skills:
+13 built-in packs · **110 challenges** across 9 skills:
 
 | Pack | Skill | Challenges | Validator |
 |---|---|---|---|
-| `sql-basics` | sql | 15 | `sql_result` (in-memory sqlite) |
+| `sql-basics` | sql | 15 | `sql_result` (in-memory sqlite) · prerequisite DAG · es |
 | `regex-101` | regex | 15 | `regex_tester` |
 | `git-basics` | git | 10 | `exact` + `multiple_choice` |
-| `css-basics` | css | 6 | `exact` + `multiple_choice` |
-| `shell-basics` | shell | 6 | `exact` |
-| `http-rest` | http | 6 | `exact` + `multiple_choice` |
+| `algorithms` | algorithms | 12 | `test_cases`/`freeform` (sandboxed subprocess) · prerequisite DAG |
+| `css-basics` | css | 9 | `exact` + `multiple_choice` |
+| `shell-basics` | shell | 9 | `exact` |
+| `http-rest` | http | 9 | `exact` + `multiple_choice` |
+| `data-structures` | python | 10 | `test_cases` · es |
+| `py-stdlib` | python | 8 | `test_cases`/`freeform` (sandboxed subprocess) |
 | `fix-bug` | python | 4 | `test_cases` (sandboxed subprocess) |
-| `data-structures` | python | 4 | `test_cases` |
-| `algorithms` | algorithms | 4 | `test_cases` (sandboxed subprocess) |
 | `fix-bug-js` | javascript | 3 | `test_cases` (node, sandboxed) |
 | `freeform-intro` | python | 3 | `freeform` (hidden-test construction) |
 | `mini-cli` | python | 3 | `freeform` (capstone → portfolio artifact) |

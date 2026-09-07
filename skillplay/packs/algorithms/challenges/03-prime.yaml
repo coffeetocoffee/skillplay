@@ -1,4 +1,5 @@
 id: alg-prime-01
+prerequisites: [alg-fact-01]
 title: Prime check
 topic: number-theory
 difficulty: 3

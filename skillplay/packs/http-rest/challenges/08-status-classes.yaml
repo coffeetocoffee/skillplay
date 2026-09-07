@@ -1,0 +1,23 @@
+id: http-status-classes-01
+prerequisites: [http-flow-01]
+title: Status class ranges
+topic: status-flow
+difficulty: 3
+xp: 25
+type: multiple_choice
+prompt: |
+  Which status-code range signals "the client must take further action to
+  complete the request" (e.g. follow a redirect)?
+options:
+  - {id: a, text: "1xx"}
+  - {id: b, text: "2xx"}
+  - {id: c, text: "3xx"}
+  - {id: d, text: "4xx"}
+validation:
+  mode: multiple_choice
+  answer_id: c
+hints:
+  - "301 Moved Permanently and 302 Found belong to this class."
+explanation: |
+  3xx responses are redirections — the client must take further action,
+  usually by requesting a different URL.

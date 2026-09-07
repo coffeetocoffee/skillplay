@@ -1,4 +1,5 @@
 id: sql-subquery-01
+prerequisites: [sql-where-01, sql-count-01]
 skill: sql
 title: Filter with a subquery
 topic: subquery
@@ -22,3 +23,12 @@ hints:
   - "A subquery in parentheses computes the average; compare price against it."
 explanation: |
   The subquery `(SELECT AVG(price) FROM products)` yields 27.5; rows above it are kept.
+translations:
+  es:
+    title: Filtra con una subconsulta
+    prompt: |
+      Devuelve los nombres de los productos cuyo precio está por encima del precio medio.
+    hints:
+      - "Una subconsulta entre paréntesis calcula la media; compara el precio con ella."
+    explanation: |
+      La subconsulta `(SELECT AVG(price) FROM products)` da 27.5; se conservan las filas por encima.

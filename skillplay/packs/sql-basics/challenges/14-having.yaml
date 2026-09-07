@@ -1,4 +1,5 @@
 id: sql-having-01
+prerequisites: [sql-group-01]
 skill: sql
 title: Filter groups with HAVING
 topic: aggregate
@@ -24,3 +25,12 @@ hints:
   - "HAVING filters groups, like WHERE but applied after aggregation."
 explanation: |
   `HAVING COUNT(*) > 1` keeps only groups (authors) with more than one book.
+translations:
+  es:
+    title: Filtra grupos con HAVING
+    prompt: |
+      Devuelve los nombres de los autores que han escrito más de un libro.
+    hints:
+      - "HAVING filtra grupos, como WHERE pero aplicado después de la agregación."
+    explanation: |
+      `HAVING COUNT(*) > 1` conserva solo los grupos (autores) con más de un libro.

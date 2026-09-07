@@ -1,4 +1,5 @@
 id: ds-count-01
+prerequisites: [ds-last-01]
 title: Count occurrences
 topic: lists
 difficulty: 2

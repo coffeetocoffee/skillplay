@@ -1,0 +1,19 @@
+id: css-nth-01
+prerequisites: [css-sel-04]
+title: Structural pseudo-class
+topic: selectors
+difficulty: 3
+xp: 25
+type: exact
+prompt: |
+  Write the CSS selector that targets an <li> element that is the second
+  child of its parent (any list).
+answer:
+  value: "li:nth-child(2)"
+validation:
+  mode: exact
+hints:
+  - "The structural pseudo-class `:nth-child(n)` matches the n-th child of its parent."
+explanation: |
+  `li:nth-child(2)` matches every <li> that is exactly the second child of
+  its parent element.

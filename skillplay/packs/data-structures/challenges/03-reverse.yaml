@@ -1,4 +1,5 @@
 id: ds-reverse-01
+prerequisites: [ds-last-01]
 title: Reverse a list
 topic: lists
 difficulty: 2

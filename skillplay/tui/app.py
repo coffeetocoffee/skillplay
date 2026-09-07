@@ -388,7 +388,7 @@ class PlayScreen(Screen):
                 "ch": ch,
                 "user_input": user_input,
                 "result": res,
-                "mistake_type": (engine.classify_mistake(ch, res) if not res.correct else None),
+                "mistake_type": (res.mistake_type or None),
             }
             self.query_one("#mentor-btn", Button).display = True
         if res.correct:

@@ -1,0 +1,20 @@
+id: sh-pipe-01
+prerequisites: [sh-grep-01]
+title: Count matches with a pipe
+topic: pipes
+difficulty: 3
+xp: 25
+type: exact
+prompt: |
+  Type the command that counts how many lines in access.log contain "404",
+  by piping grep's output into the line-counting tool.
+answer:
+  value: "grep 404 access.log | wc -l"
+validation:
+  mode: exact
+hints:
+  - "`|` sends the output of one command as input to the next."
+  - "`wc -l` counts lines of its input."
+explanation: |
+  `grep 404 access.log | wc -l` filters the matching lines and pipes them to
+  `wc -l`, which prints the count.

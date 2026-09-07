@@ -29,6 +29,7 @@ class PlayResult:
     xp_gained: int = 0
     retried: bool = False
     skill: str = ""
+    mistake_type: str = ""
 
 
 @dataclass
@@ -406,7 +407,9 @@ def submit(
         session.retried_ids.add(ch.id)
         mtype = classify_mistake(ch, res)
         _record_mistake(progress, ch.id, mtype)
-        result = PlayResult(ch.id, False, res.detail, retried=True, skill=ch.skill)
+        result = PlayResult(
+            ch.id, False, res.detail, retried=True, skill=ch.skill, mistake_type=mtype
+        )
     else:
         if first_try:
             session.first_tries[ch.id] = False
@@ -414,7 +417,7 @@ def submit(
         _advance_box(progress, ch.id, correct=False, latency_ms=latency_ms)
         mtype = classify_mistake(ch, res)
         _record_mistake(progress, ch.id, mtype)
-        result = PlayResult(ch.id, False, res.detail, skill=ch.skill)
+        result = PlayResult(ch.id, False, res.detail, skill=ch.skill, mistake_type=mtype)
     # Section E: append a per-attempt record for the local adaptive model.
     # Persisted to disk only in `finalize` (engine invariant: disk on finalize).
     session.attempts.append(
@@ -542,6 +545,7 @@ def snapshot(session: Session) -> dict:
                 "xp_gained": r.xp_gained,
                 "retried": r.retried,
                 "skill": r.skill,
+                "mistake_type": r.mistake_type,
             }
             for r in session.results
         ],
@@ -572,6 +576,7 @@ def resume_session(snapshot: dict, packs: list) -> Session | None:
             r.get("xp_gained", 0),
             r.get("retried", False),
             r.get("skill", ""),
+            r.get("mistake_type", ""),
         )
         for r in snapshot.get("results", [])
     ]

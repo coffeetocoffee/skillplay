@@ -1,4 +1,5 @@
 id: alg-fact-01
+prerequisites: [alg-max-01]
 title: Factorial
 topic: math
 difficulty: 2

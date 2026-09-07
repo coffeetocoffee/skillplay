@@ -1,0 +1,12 @@
+id: py-stdlib
+name: Python Standard Library
+version: 0.1.0
+author: core
+skill: python
+description: Batteries included — paths, dates, JSON, itertools and friends from the standard library. (test_cases/freeform)
+difficulty: intermediate
+schema_version: 1
+tags: [python, stdlib, freeform]
+license: MIT
+min_version: "1.1.0"
+contributor: core

@@ -1,0 +1,41 @@
+id: alg-power-01
+prerequisites: [alg-fib-01]
+title: Power by recursion
+topic: recursion
+difficulty: 3
+xp: 25
+type: freeform
+prompt: |
+  Write a function `power(base, n)` that returns base raised to the
+  non-negative integer `n`, WITHOUT using `**` or `pow()`. Solve it
+  recursively: power(base, 0) == 1, and power(base, n) == base * power(base, n - 1).
+  Tests are hidden.
+starter_code: |
+  def power(base, n):
+      # your code here
+      pass
+answer:
+  reference_code: |
+    def power(base, n):
+        if n == 0:
+            return 1
+        return base * power(base, n - 1)
+validation:
+  mode: freeform
+  lang: python
+  function: power
+  test_cases:
+    - args: [2, 0]
+      expected: 1
+    - args: [2, 3]
+      expected: 8
+    - args: [5, 1]
+      expected: 5
+    - args: [3, 4]
+      expected: 81
+hints:
+  - "Every recursion needs a base case: anything to the 0th power is 1."
+  - "The recursive step shrinks n by one and multiplies by base."
+explanation: |
+  The recursion peels one exponent per call until the base case returns 1,
+  then the multiplications unwind.

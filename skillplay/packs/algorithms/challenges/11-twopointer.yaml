@@ -1,0 +1,47 @@
+id: alg-twopointer-01
+prerequisites: [alg-bubble-01]
+title: Two-pointer pair sum
+topic: two-pointer
+difficulty: 3
+xp: 25
+type: freeform
+prompt: |
+  Write a function `has_pair_sum(nums, target)` that returns True when two
+  entries of the ascending-sorted list `nums` add up to `target`, else False.
+  Use two pointers starting at both ends and moving inward. Tests are hidden.
+starter_code: |
+  def has_pair_sum(nums, target):
+      # your code here
+      pass
+answer:
+  reference_code: |
+    def has_pair_sum(nums, target):
+        lo, hi = 0, len(nums) - 1
+        while lo < hi:
+            s = nums[lo] + nums[hi]
+            if s == target:
+                return True
+            if s < target:
+                lo += 1
+            else:
+                hi -= 1
+        return False
+validation:
+  mode: freeform
+  lang: python
+  function: has_pair_sum
+  test_cases:
+    - args: [[1, 2, 3, 4], 7]
+      expected: true
+    - args: [[1, 2, 3], 7]
+      expected: false
+    - args: [[0, 0], 0]
+      expected: true
+    - args: [[5], 5]
+      expected: false
+hints:
+  - "If the sum of the two ends is too small, only moving `lo` right can raise it."
+  - "If the sum is too large, only moving `hi` left can lower it."
+explanation: |
+  The two-pointer sweep checks each plausible pair once; a too-small sum
+  advances the left pointer, a too-large sum retreats the right one.

@@ -1,0 +1,36 @@
+id: stdlib-random-01
+prerequisites: [stdlib-json-01]
+title: Deterministic randomness
+topic: random
+difficulty: 2
+xp: 20
+type: fix_bug
+prompt: |
+  `flip(seed)` should return the first `random.random()` value from a Random
+  instance seeded with `seed` — reproducible on every call. It currently uses
+  the global generator, so it never repeats. Fix it.
+
+      import random
+
+      def flip(seed):
+          return random.random()   # BUG: not reproducible
+answer:
+  reference_code: |
+    import random
+
+    def flip(seed):
+        return random.Random(seed).random()
+validation:
+  mode: test_cases
+  lang: python
+  function: flip
+  test_cases:
+    - args: [42]
+      expected: 0.6394267984578837
+    - args: [0]
+      expected: 0.8444218515250481
+hints:
+  - "Create your own generator: `random.Random(seed)`, then call `.random()` on it."
+explanation: |
+  A locally constructed `random.Random(seed)` is independent of the global
+  generator and produces the same first value for the same seed.

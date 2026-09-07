@@ -1,0 +1,47 @@
+id: alg-bisect-01
+prerequisites: [alg-bubble-01]
+title: Binary search
+topic: search
+difficulty: 3
+xp: 25
+type: freeform
+prompt: |
+  Write a function `binary_search(nums, target)` that returns the index of
+  `target` in the ascending-sorted list `nums`, or -1 when it is absent.
+  Use the classic two-pointer halving search. Tests are hidden.
+starter_code: |
+  def binary_search(nums, target):
+      # your code here
+      pass
+answer:
+  reference_code: |
+    def binary_search(nums, target):
+        lo, hi = 0, len(nums) - 1
+        while lo <= hi:
+            mid = (lo + hi) // 2
+            if nums[mid] == target:
+                return mid
+            if nums[mid] < target:
+                lo = mid + 1
+            else:
+                hi = mid - 1
+        return -1
+validation:
+  mode: freeform
+  lang: python
+  function: binary_search
+  test_cases:
+    - args: [[1, 3, 5, 7, 9], 7]
+      expected: 3
+    - args: [[1, 3, 5, 7, 9], 4]
+      expected: -1
+    - args: [[2], 2]
+      expected: 0
+    - args: [[], 1]
+      expected: -1
+hints:
+  - "Keep two indices `lo` and `hi`; while lo <= hi, compare against the midpoint."
+  - "When the midpoint value is too small, search the right half: `lo = mid + 1`."
+explanation: |
+  Each step halves the search range by comparing the midpoint; the loop ends
+  with -1 when the range is empty.

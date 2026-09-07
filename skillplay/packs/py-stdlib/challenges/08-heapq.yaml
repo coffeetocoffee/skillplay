@@ -1,0 +1,42 @@
+id: stdlib-heapq-01
+prerequisites: [stdlib-collections-01]
+title: k smallest items
+topic: heapq
+difficulty: 3
+xp: 25
+type: freeform
+prompt: |
+  Write a function `smallest(nums, k)` that returns the k smallest numbers of
+  `nums` in ascending order — `heapq.nsmallest(k, nums)` does exactly this.
+  Tests are hidden.
+starter_code: |
+  import heapq
+
+  def smallest(nums, k):
+      # your code here
+      pass
+answer:
+  reference_code: |
+    import heapq
+
+    def smallest(nums, k):
+        return heapq.nsmallest(k, nums)
+validation:
+  mode: freeform
+  lang: python
+  function: smallest
+  test_cases:
+    - args: [[5, 1, 3], 2]
+      expected: [1, 3]
+    - args: [[4], 1]
+      expected: [4]
+    - args: [[2, 2, 1], 2]
+      expected: [1, 2]
+    - args: [[], 3]
+      expected: []
+hints:
+  - "`heapq.nsmallest(k, nums)` already returns the k smallest in ascending order."
+  - "Asking for more elements than the list has returns the whole list, sorted."
+explanation: |
+  `heapq.nsmallest` maintains a max-heap of size k while streaming the input —
+  O(n log k) instead of a full sort.

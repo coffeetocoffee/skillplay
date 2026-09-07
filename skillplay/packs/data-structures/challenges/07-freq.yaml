@@ -1,0 +1,58 @@
+id: ds-freq-01
+prerequisites: [ds-dict-01]
+title: Most frequent element
+topic: dicts
+difficulty: 3
+xp: 25
+type: freeform
+prompt: |
+  Write a function `most_common(items)` that returns the element that occurs
+  most often in `items`. If several elements tie, return the one that reaches
+  the top count first when scanning left to right. Tests are hidden.
+starter_code: |
+  def most_common(items):
+      # your code here
+      pass
+answer:
+  reference_code: |
+    def most_common(items):
+        counts = {}
+        for x in items:
+            counts[x] = counts.get(x, 0) + 1
+        best = None
+        best_n = 0
+        for x in items:
+            if counts[x] > best_n:
+                best = x
+                best_n = counts[x]
+        return best
+validation:
+  mode: freeform
+  lang: python
+  function: most_common
+  test_cases:
+    - args: [["a", "b", "b"]]
+      expected: "b"
+    - args: [[1, 1, 2, 2]]
+      expected: 1
+    - args: [[7]]
+      expected: 7
+hints:
+  - "First count every element in a dict, then find the highest count."
+  - "Scanning the original order and using strict `>` breaks ties by first occurrence."
+explanation: |
+  Two passes: a hash-map of counts, then a left-to-right scan that keeps the
+  first element reaching the maximum count.
+translations:
+  es:
+    title: Elemento más frecuente
+    prompt: |
+      Escribe una función `most_common(items)` que devuelva el elemento que más
+      veces aparece en `items`. Si hay empates, devuelve el que alcanza primero
+      el recuento máximo al recorrer de izquierda a derecha.
+    hints:
+      - "Primero cuenta cada elemento en un dict; después busca el recuento más alto."
+      - "Recorrer en el orden original y usar `>` estricto rompe empates por primera aparición."
+    explanation: |
+      Dos pasadas: un hash-map de recuentos y luego un barrido de izquierda a
+      derecha que conserva el primer elemento que alcanza el recuento máximo.

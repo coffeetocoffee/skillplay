@@ -1,4 +1,5 @@
 id: sql-between-01
+prerequisites: [sql-and-01]
 skill: sql
 title: Range filter with BETWEEN
 topic: where
@@ -22,3 +23,12 @@ hints:
   - "BETWEEN low AND high is inclusive on both ends."
 explanation: |
   `BETWEEN a AND b` is inclusive; it is equivalent to `>= a AND <= b`.
+translations:
+  es:
+    title: Filtro de rango con BETWEEN
+    prompt: |
+      Devuelve los nombres de los usuarios cuya edad está entre 25 y 35, ambos incluidos.
+    hints:
+      - "BETWEEN bajo AND alto es inclusivo en ambos extremos."
+    explanation: |
+      `BETWEEN a AND b` es inclusivo; equivale a `>= a AND <= b`.

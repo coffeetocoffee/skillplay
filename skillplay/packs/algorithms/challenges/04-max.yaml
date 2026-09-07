@@ -1,4 +1,5 @@
 id: alg-max-01
+prerequisites: [alg-fib-01]
 title: Maximum of a list
 topic: search
 difficulty: 2

@@ -1,0 +1,53 @@
+id: ds-heap-01
+prerequisites: [ds-freq-01]
+title: Top-K elements (heap)
+topic: heaps
+difficulty: 3
+xp: 25
+type: freeform
+prompt: |
+  Write a function `top_k(nums, k)` that returns the k largest numbers of
+  `nums` in descending order (duplicates allowed). Use the heap idea —
+  `heapq.nlargest(k, nums)` does exactly this. Tests are hidden.
+starter_code: |
+  def top_k(nums, k):
+      # your code here
+      pass
+answer:
+  reference_code: |
+    import heapq
+
+    def top_k(nums, k):
+        return heapq.nlargest(k, nums)
+validation:
+  mode: freeform
+  lang: python
+  function: top_k
+  test_cases:
+    - args: [[1, 5, 3], 2]
+      expected: [5, 3]
+    - args: [[4], 1]
+      expected: [4]
+    - args: [[2, 2, 1], 2]
+      expected: [2, 2]
+    - args: [[], 3]
+      expected: []
+hints:
+  - "`heapq.nlargest(k, nums)` already returns the k largest in descending order."
+  - "Asking for more elements than the list has returns the whole list, sorted."
+explanation: |
+  `heapq.nlargest` maintains a min-heap of size k while streaming the input —
+  O(n log k) instead of a full O(n log n) sort.
+translations:
+  es:
+    title: Los K mayores (montículo)
+    prompt: |
+      Escribe una función `top_k(nums, k)` que devuelva los k números mayores de
+      `nums` en orden descendente (con duplicados permitidos). Usa la idea del
+      montículo — `heapq.nlargest(k, nums)` hace exactamente esto.
+    hints:
+      - "`heapq.nlargest(k, nums)` ya devuelve los k mayores en orden descendente."
+      - "Pedir más elementos de los que tiene la lista devuelve toda la lista, ordenada."
+    explanation: |
+      `heapq.nlargest` mantiene un min-heap de tamaño k mientras recorre la
+      entrada — O(n log k) en lugar de un ordenamiento completo O(n log n).

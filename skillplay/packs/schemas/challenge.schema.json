@@ -74,6 +74,20 @@
       "type": "array",
       "items": {"type": "string", "pattern": "^[a-z0-9-]+$"},
       "description": "V4: challenge ids that must be answered correctly before this one unlocks."
+    },
+    "translations": {
+      "type": "object",
+      "description": "V9: per-language overrides for user-facing text, keyed by language code (e.g. es).",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "title": {"type": "string"},
+          "prompt": {"type": "string"},
+          "hints": {"type": "array", "items": {"type": "string"}},
+          "explanation": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
     }
   },
   "additionalProperties": false

@@ -1,0 +1,20 @@
+id: css-flex-01
+prerequisites: [css-prop-01]
+title: Center along the main axis
+topic: layout
+difficulty: 3
+xp: 25
+type: exact
+prompt: |
+  Write the single declaration that centers a flex container's items along
+  the main axis (horizontally, in a row container).
+answer:
+  value: "justify-content: center"
+validation:
+  mode: exact
+hints:
+  - "It is a property applied to the container, not to the items."
+  - "The property starts with `justify-`."
+explanation: |
+  `justify-content: center` packs the flex items toward the center of the
+  main axis; `align-items` does the same job on the cross axis.

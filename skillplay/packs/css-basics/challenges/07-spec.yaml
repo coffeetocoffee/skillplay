@@ -1,0 +1,23 @@
+id: css-spec-01
+prerequisites: [css-sel-02, css-sel-03]
+title: Which rule wins?
+topic: specificity
+difficulty: 3
+xp: 25
+type: multiple_choice
+prompt: |
+  The same <p> element is targeted by three rules: `p { color: gray; }`,
+  `.intro { color: blue; }` and `#main { color: red; }`. Which color wins?
+options:
+  - {id: a, text: "gray (the `p` rule)"}
+  - {id: b, text: "blue (the `.intro` rule)"}
+  - {id: c, text: "red (the `#main` rule)"}
+  - {id: d, text: "the last rule in the stylesheet always wins"}
+validation:
+  mode: multiple_choice
+  answer_id: c
+hints:
+  - "Specificity ranks id selectors above class selectors, which beat type selectors."
+explanation: |
+  Specificity order is id (#) > class (.) > type (p); the id rule wins no
+  matter where it appears.

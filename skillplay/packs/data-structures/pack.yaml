@@ -1,9 +1,9 @@
 id: data-structures
 name: Data Structures
-version: 0.1.0
+version: 0.2.0
 author: core
 skill: python
-description: Core list operations with Python — fix the broken helpers. (test_cases)
+description: Lists, dicts, sets, stacks, queues and heaps — fix and build the core helpers. (test_cases)
 difficulty: beginner
 schema_version: 1
 tags: [python, data-structures]
@@ -11,4 +11,4 @@ license: MIT
 translations:
   es:
     name: Estructuras de datos
-    description: Operaciones básicas con listas en Python - corrige los helpers rotos. (test_cases)
+    description: Listas, dicts, conjuntos, pilas, colas y montículos — corrige y construye los helpers básicos. (test_cases)

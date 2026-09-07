@@ -1,0 +1,46 @@
+id: alg-bubble-01
+prerequisites: [alg-min-01]
+title: Bubble sort
+topic: sorting
+difficulty: 3
+xp: 25
+type: freeform
+prompt: |
+  Write a function `bubble_sort(nums)` that returns a NEW list with the same
+  numbers in ascending order, implemented with the bubble-sort idea: repeatedly
+  swap adjacent out-of-order pairs until no swaps are needed. Don't use
+  `sorted()` or `.sort()`. Tests are hidden.
+starter_code: |
+  def bubble_sort(nums):
+      # your code here
+      pass
+answer:
+  reference_code: |
+    def bubble_sort(nums):
+        arr = list(nums)
+        n = len(arr)
+        for i in range(n):
+            for j in range(n - 1 - i):
+                if arr[j] > arr[j + 1]:
+                    arr[j], arr[j + 1] = arr[j + 1], arr[j]
+        return arr
+validation:
+  mode: freeform
+  lang: python
+  function: bubble_sort
+  test_cases:
+    - args: [[3, 1, 2]]
+      expected: [1, 2, 3]
+    - args: [[5, 5, -1]]
+      expected: [-1, 5, 5]
+    - args: [[]]
+      expected: []
+    - args: [[1]]
+      expected: [1]
+hints:
+  - "Copy the input first (`list(nums)`) so the original list is untouched."
+  - "After pass i, the i largest values have bubbled to the end — the inner loop can shrink."
+  - "Swap two entries with tuple assignment: `arr[j], arr[j+1] = arr[j+1], arr[j]`."
+explanation: |
+  Each pass bubbles the largest remaining value to the end by swapping adjacent
+  out-of-order pairs; n passes guarantee full order.

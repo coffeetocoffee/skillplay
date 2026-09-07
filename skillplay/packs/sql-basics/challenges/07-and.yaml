@@ -1,4 +1,5 @@
 id: sql-and-01
+prerequisites: [sql-where-01]
 skill: sql
 title: Combine conditions with AND
 topic: where
@@ -22,3 +23,12 @@ hints:
   - "Use AND to require both conditions to be true."
 explanation: |
   `WHERE a AND b` keeps rows where both predicates hold.
+translations:
+  es:
+    title: Combina condiciones con AND
+    prompt: |
+      Devuelve los nombres de los usuarios mayores de 30 años Y que viven en 'paris'.
+    hints:
+      - "Usa AND para exigir que ambas condiciones sean verdaderas."
+    explanation: |
+      `WHERE a AND b` conserva las filas donde ambos predicados se cumplen.

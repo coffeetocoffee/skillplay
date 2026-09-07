@@ -1,4 +1,5 @@
 id: ds-last-01
+prerequisites: [ds-first-01]
 title: Return the last element
 topic: lists
 difficulty: 1

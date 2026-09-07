@@ -1,0 +1,23 @@
+id: http-flow-01
+prerequisites: [http-status-01]
+title: Meaning of 201
+topic: status-flow
+difficulty: 3
+xp: 25
+type: multiple_choice
+prompt: |
+  A client POSTs a new resource and the server responds with status 201.
+  What does 201 mean?
+options:
+  - {id: a, text: "the request was accepted but not processed yet"}
+  - {id: b, text: "a new resource was created"}
+  - {id: c, text: "the request had the wrong syntax"}
+  - {id: d, text: "the server redirected the client elsewhere"}
+validation:
+  mode: multiple_choice
+  answer_id: b
+hints:
+  - "2xx codes are successes; 201 refines 200 with a creation-specific meaning."
+explanation: |
+  201 Created is the canonical success response to a POST that resulted in a
+  new resource (often with a Location header pointing at it).

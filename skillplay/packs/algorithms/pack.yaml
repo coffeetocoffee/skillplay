@@ -1,9 +1,9 @@
 id: algorithms
 name: Algorithms
-version: 0.1.0
+version: 0.2.0
 author: core
 skill: algorithms
-description: Classic algorithms — fix the broken implementations. (test_cases)
+description: Classic algorithm patterns — loops, hashing, sorting, searching, recursion — by fixing and building them.
 difficulty: intermediate
 schema_version: 1
 tags: [python, algorithms]

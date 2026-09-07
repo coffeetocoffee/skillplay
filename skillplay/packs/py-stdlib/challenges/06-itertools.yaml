@@ -1,0 +1,39 @@
+id: stdlib-itertools-01
+prerequisites: [stdlib-collections-01]
+title: Pairwise sums
+topic: itertools
+difficulty: 3
+xp: 25
+type: freeform
+prompt: |
+  Write a function `pair_sums(nums)` that returns the sums of each adjacent
+  pair: pair_sums([1, 2, 3]) == [3, 5]. Use `itertools.pairwise` (Python
+  3.10+) to generate the pairs. Tests are hidden.
+starter_code: |
+  from itertools import pairwise
+
+  def pair_sums(nums):
+      # your code here
+      pass
+answer:
+  reference_code: |
+    from itertools import pairwise
+
+    def pair_sums(nums):
+        return [a + b for a, b in pairwise(nums)]
+validation:
+  mode: freeform
+  lang: python
+  function: pair_sums
+  test_cases:
+    - args: [[1, 2, 3]]
+      expected: [3, 5]
+    - args: [[5]]
+      expected: []
+    - args: [[1, 2, 3, 4]]
+      expected: [3, 5, 7]
+hints:
+  - "`pairwise([1, 2, 3])` yields (1, 2) and (2, 3) — overlapping pairs."
+explanation: |
+  `itertools.pairwise` slides a window of two over the input; summing each
+  window gives the adjacent-pair sums.
