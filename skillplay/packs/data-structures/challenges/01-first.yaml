@@ -1,0 +1,41 @@
+id: ds-first-01
+title: Return the first element
+topic: lists
+difficulty: 1
+xp: 15
+type: fix_bug
+prompt: |
+  `first(lst)` should return the first element of `lst`, but it returns the last.
+  Fix it so that first([1, 2, 3]) == 1 and first([5]) == 5.
+
+      def first(lst):
+          return lst[-1]   # BUG: returns last, not first
+answer:
+  reference_code: |
+    def first(lst):
+        return lst[0]
+validation:
+  mode: test_cases
+  lang: python
+  function: first
+  test_cases:
+    - args: [[1, 2, 3]]
+      expected: 1
+    - args: [[5]]
+      expected: 5
+    - args: [["a", "b"]]
+      expected: "a"
+hints:
+  - "Index 0 is the first element."
+explanation: |
+  `lst[0]` accesses the first item of a list.
+translations:
+  es:
+    title: Devuelve el primer elemento
+    prompt: |
+      `first(lst)` debe devolver el primer elemento de `lst`, pero devuelve el último.
+      Corrígelo para que first([1, 2, 3]) == 1 y first([5]) == 5.
+    hints:
+      - "El índice 0 es el primer elemento."
+    explanation: |
+      `lst[0]` accede al primer elemento de una lista.

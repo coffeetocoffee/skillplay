@@ -1,0 +1,36 @@
+id: alg-fib-01
+title: Fibonacci
+topic: sequences
+difficulty: 2
+xp: 20
+type: fix_bug
+prompt: |
+  `fib(n)` should return the n-th Fibonacci number (fib(0)=0, fib(1)=1), but it
+  just returns `n`. Fix it so that fib(7) == 13.
+
+      def fib(n):
+          return n   # BUG: returns n, not the Fibonacci value
+answer:
+  reference_code: |
+    def fib(n):
+        a, b = 0, 1
+        for _ in range(n):
+            a, b = b, a + b
+        return a
+validation:
+  mode: test_cases
+  lang: python
+  function: fib
+  test_cases:
+    - args: [0]
+      expected: 0
+    - args: [1]
+      expected: 1
+    - args: [5]
+      expected: 5
+    - args: [7]
+      expected: 13
+hints:
+  - "Iterate, carrying the previous two values forward."
+explanation: |
+  Iterating the (a, b) -> (b, a+b) step n times yields fib(n).

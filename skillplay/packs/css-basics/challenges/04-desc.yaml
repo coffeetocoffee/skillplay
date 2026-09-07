@@ -1,0 +1,17 @@
+id: css-sel-04
+title: Descendant combinator
+topic: selectors
+difficulty: 2
+xp: 15
+type: exact
+prompt: |
+  Write the CSS selector that targets every <a> element that is a descendant
+  of a <nav> element.
+answer:
+  value: "nav a"
+validation:
+  mode: exact
+hints:
+  - "Separate two selectors with a space to mean 'inside'."
+explanation: |
+  `nav a` is a descendant combinator — it matches <a> anywhere inside <nav>.

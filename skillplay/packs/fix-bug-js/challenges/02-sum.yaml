@@ -1,0 +1,36 @@
+id: fbjs-sum-01
+title: Fix the array sum
+topic: arrays
+difficulty: 2
+xp: 20
+type: fix_bug
+prompt: |
+  `sumArray(arr)` should return the sum of all numbers in `arr`, but it only
+  returns the first element. Fix it so that sumArray([1, 2, 3]) == 6 and
+  sumArray([]) == 0.
+
+      function sumArray(arr) {
+        return arr[0] || 0;   // BUG: returns only the first element
+      }
+answer:
+  reference_code: |
+    function sumArray(arr) {
+      let total = 0;
+      for (const x of arr) total += x;
+      return total;
+    }
+validation:
+  mode: test_cases
+  lang: js
+  function: sumArray
+  test_cases:
+    - args: [[1, 2, 3]]
+      expected: 6
+    - args: [[]]
+      expected: 0
+    - args: [[5, -5, 10]]
+      expected: 10
+hints:
+  - "Use a loop to add every element to a running total that starts at 0."
+explanation: |
+  Iterating the whole array and accumulating fixes the off-by-one/output bug.

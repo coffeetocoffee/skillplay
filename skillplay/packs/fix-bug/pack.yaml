@@ -1,0 +1,12 @@
+id: fix-bug
+name: Fix the Bug
+version: 0.1.0
+author: core
+skill: python
+description: Read broken Python, fix it, and pass the hidden tests. (test_cases validator)
+difficulty: beginner
+schema_version: 1
+tags: [python, fix-bug]
+license: MIT
+min_version: "0.1.0"
+contributor: core

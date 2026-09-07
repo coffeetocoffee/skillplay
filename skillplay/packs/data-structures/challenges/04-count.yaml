@@ -1,0 +1,41 @@
+id: ds-count-01
+title: Count occurrences
+topic: lists
+difficulty: 2
+xp: 20
+type: fix_bug
+prompt: |
+  `count(lst, x)` should return how many times `x` appears in `lst`, but it
+  always returns 0. Fix it so that count([1, 2, 1, 1], 1) == 3.
+
+      def count(lst, x):
+          return 0   # BUG: never counts anything
+answer:
+  reference_code: |
+    def count(lst, x):
+        return lst.count(x)
+validation:
+  mode: test_cases
+  lang: python
+  function: count
+  test_cases:
+    - args: [[1, 2, 1, 1], 1]
+      expected: 3
+    - args: [[], 5]
+      expected: 0
+    - args: [["a", "a", "b"], "a"]
+      expected: 2
+hints:
+  - "Lists have a built-in `count` method."
+explanation: |
+  `lst.count(x)` returns the number of times x occurs in the list.
+translations:
+  es:
+    title: Cuenta las apariciones
+    prompt: |
+      `count(lst, x)` debe devolver cuántas veces aparece `x` en `lst`, pero siempre
+      devuelve 0. Corrígelo para que count([1, 2, 1, 1], 1) == 3.
+    hints:
+      - "Las listas tienen un método integrado `count`."
+    explanation: |
+      `lst.count(x)` devuelve el número de veces que x aparece en la lista.

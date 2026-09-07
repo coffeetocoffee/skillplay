@@ -1,0 +1,20 @@
+id: css-prop-02
+title: Relative font-size unit
+topic: units
+difficulty: 2
+xp: 15
+type: multiple_choice
+prompt: |
+  Which CSS unit is relative to the element's own font-size?
+options:
+  - {id: a, text: "px"}
+  - {id: b, text: "em"}
+  - {id: c, text: "pt"}
+  - {id: d, text: "cm"}
+validation:
+  mode: multiple_choice
+  answer_id: b
+hints:
+  - "It scales with the text size rather than being absolute."
+explanation: |
+  `em` is relative to the current font-size (1em == the element's font size).

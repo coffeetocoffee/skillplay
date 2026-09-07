@@ -1,0 +1,28 @@
+id: git-mc-remote-01
+prerequisites: [git-mc-clone-01]
+skill: git
+title: Track a remote
+topic: remote
+difficulty: 2
+xp: 15
+type: multiple_choice
+prompt: |
+  What command adds a named remote pointing at a URL?
+options:
+  - id: a
+    text: "git remote add origin <url>"
+  - id: b
+    text: "git add remote <url>"
+  - id: c
+    text: "git branch --remote <url>"
+  - id: d
+    text: "git fetch --add <url>"
+answer:
+  value: "a"
+validation:
+  mode: multiple_choice
+  answer_id: "a"
+hints:
+  - "remotes are usually named 'origin'."
+explanation: |
+  `git remote add <name> <url>` registers a remote repository.

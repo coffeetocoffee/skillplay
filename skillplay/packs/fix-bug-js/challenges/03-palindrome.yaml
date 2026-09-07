@@ -1,0 +1,34 @@
+id: fbjs-pal-01
+title: Fix the palindrome check
+topic: strings
+difficulty: 2
+xp: 20
+type: fix_bug
+prompt: |
+  `isPalindrome(s)` should return true when `s` reads the same forwards and
+  backwards, but it always returns false. Fix it so that isPalindrome("level")
+  == true and isPalindrome("hello") == false.
+
+      function isPalindrome(s) {
+        return false;   // BUG: never checks anything
+      }
+answer:
+  reference_code: |
+    function isPalindrome(s) {
+      return s === s.split("").reverse().join("");
+    }
+validation:
+  mode: test_cases
+  lang: js
+  function: isPalindrome
+  test_cases:
+    - args: ["level"]
+      expected: true
+    - args: ["hello"]
+      expected: false
+    - args: ["racecar"]
+      expected: true
+hints:
+  - "Reverse the string and compare it to the original with ===."
+explanation: |
+  Comparing `s` to its reversed form is the canonical palindrome test.

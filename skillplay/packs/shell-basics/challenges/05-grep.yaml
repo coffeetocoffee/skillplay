@@ -1,0 +1,17 @@
+id: sh-grep-01
+title: Find a line in a file
+topic: text
+difficulty: 2
+xp: 15
+type: exact
+prompt: |
+  Type the command that prints every line in report.log containing the word
+  "error", ignoring case.
+answer:
+  value: "grep -i error report.log"
+validation:
+  mode: exact
+hints:
+  - "`grep` searches text; `-i` makes it case-insensitive."
+explanation: |
+  `grep -i error report.log` prints case-insensitive matches for "error".

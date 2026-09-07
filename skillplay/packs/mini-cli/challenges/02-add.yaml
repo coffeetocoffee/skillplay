@@ -1,0 +1,33 @@
+id: mini-cli-02
+title: Add two numbers
+topic: functions
+difficulty: 1
+xp: 15
+type: freeform
+prerequisites: [mini-cli-01]
+prompt: |
+  Write a function `add(a, b)` that returns the sum of two numbers.
+  The tests are hidden — construct it from scratch.
+starter_code: |
+  def add(a, b):
+      # your code here
+      pass
+answer:
+  reference_code: |
+    def add(a, b):
+        return a + b
+validation:
+  mode: freeform
+  lang: python
+  function: add
+  test_cases:
+    - args: [2, 3]
+      expected: 5
+    - args: [-1, 1]
+      expected: 0
+    - args: [0, 0]
+      expected: 0
+hints:
+  - "The + operator returns the sum of its operands."
+explanation: |
+  `a + b` returns the arithmetic sum of the two arguments.

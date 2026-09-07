@@ -1,0 +1,21 @@
+id: git-commit-01
+prerequisites: [git-add-01]
+skill: git
+title: Commit staged changes
+topic: commit
+difficulty: 1
+xp: 10
+type: git_command
+prompt: |
+  What command records the staged changes with the message "fix bug"?
+  (Use the -m flag form.)
+answer:
+  value: "git commit -m \"fix bug\""
+validation:
+  mode: exact
+  case_insensitive: true
+  answers: ["git commit -m \"fix bug\"", "git commit -m 'fix bug'"]
+hints:
+  - "The message follows -m."
+explanation: |
+  `git commit -m "..."` saves a snapshot with a message.

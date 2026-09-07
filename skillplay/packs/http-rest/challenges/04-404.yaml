@@ -1,0 +1,20 @@
+id: http-status-01
+title: Not Found status
+topic: status
+difficulty: 1
+xp: 10
+type: multiple_choice
+prompt: |
+  Which HTTP status code means "Not Found"?
+options:
+  - {id: a, text: "200"}
+  - {id: b, text: "301"}
+  - {id: c, text: "404"}
+  - {id: d, text: "500"}
+validation:
+  mode: multiple_choice
+  answer_id: c
+hints:
+  - "It is the classic 'page missing' code."
+explanation: |
+  404 indicates the server could not find the requested resource.

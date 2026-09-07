@@ -1,0 +1,32 @@
+id: mini-cli-03
+title: Assemble the CLI entry point
+topic: main
+difficulty: 2
+xp: 20
+type: freeform
+prerequisites: [mini-cli-02]
+prompt: |
+  Write a function `main()` that prints a friendly greeting for "World" and then
+  prints the result of adding 2 and 3 (e.g. "2 + 3 = 5"). It should reuse the
+  `greet` and `add` functions you already wrote. The tests are hidden.
+starter_code: |
+  def main():
+      # your code here
+      pass
+answer:
+  reference_code: |
+    def main():
+        print(greet("World"))
+        print("2 + 3 =", add(2, 3))
+validation:
+  mode: freeform
+  lang: python
+  function: main
+  test_cases:
+    - args: []
+      expected: null
+hints:
+  - "Call greet('World') and add(2, 3) inside main and print their results."
+explanation: |
+  `main` wires the earlier building blocks together; the capstone assembles all
+  three functions into a single runnable script.

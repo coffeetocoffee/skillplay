@@ -1,0 +1,20 @@
+id: git-status-01
+prerequisites: [git-init-01]
+skill: git
+title: Check working tree status
+topic: status
+difficulty: 1
+xp: 10
+type: git_command
+prompt: |
+  What command shows the current state of the working tree and staging area?
+answer:
+  value: "git status"
+validation:
+  mode: exact
+  case_insensitive: true
+  answers: ["git status"]
+hints:
+  - "It tells you what is modified, staged, or untracked."
+explanation: |
+  `git status` reports pending changes.

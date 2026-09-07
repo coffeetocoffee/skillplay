@@ -1,0 +1,24 @@
+id: sql-distinct-01
+skill: sql
+title: Remove duplicates with DISTINCT
+topic: distinct
+difficulty: 2
+xp: 15
+type: sql_query
+prompt: |
+  Return the distinct shades from the `colors` table, with no duplicates.
+context:
+  db_seed_sql: |
+    CREATE TABLE colors(shade TEXT);
+    INSERT INTO colors VALUES ('red'), ('red'), ('blue'), ('green'), ('blue');
+  schema_preview: "colors(shade TEXT)"
+answer:
+  reference_sql: "SELECT DISTINCT shade FROM colors"
+validation:
+  mode: sql_result
+  order_matters: false
+  normalize: true
+hints:
+  - "DISTINCT collapses duplicate rows in the result set."
+explanation: |
+  `SELECT DISTINCT` returns each unique value only once.

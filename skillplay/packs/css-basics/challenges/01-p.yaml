@@ -1,0 +1,16 @@
+id: css-sel-01
+title: Target all paragraphs
+topic: selectors
+difficulty: 1
+xp: 10
+type: exact
+prompt: |
+  Write the CSS selector that targets every <p> element on the page.
+answer:
+  value: "p"
+validation:
+  mode: exact
+hints:
+  - "A bare tag name selects all elements of that type."
+explanation: |
+  `p` is a type selector — it matches every <p> element.

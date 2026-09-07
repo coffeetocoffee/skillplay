@@ -1,0 +1,10 @@
+id: algorithms
+name: Algorithms
+version: 0.1.0
+author: core
+skill: algorithms
+description: Classic algorithms — fix the broken implementations. (test_cases)
+difficulty: intermediate
+schema_version: 1
+tags: [python, algorithms]
+license: MIT

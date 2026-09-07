@@ -1,0 +1,20 @@
+id: http-get-01
+title: Read a resource
+topic: verbs
+difficulty: 1
+xp: 10
+type: multiple_choice
+prompt: |
+  Which HTTP method is used to retrieve (read) a resource?
+options:
+  - {id: a, text: "GET"}
+  - {id: b, text: "POST"}
+  - {id: c, text: "PUT"}
+  - {id: d, text: "DELETE"}
+validation:
+  mode: multiple_choice
+  answer_id: a
+hints:
+  - "It is the verb your browser uses when you visit a page."
+explanation: |
+  GET retrieves a resource without side effects.

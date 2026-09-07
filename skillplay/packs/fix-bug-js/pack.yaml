@@ -1,0 +1,12 @@
+id: fix-bug-js
+name: Fix the Bug (JavaScript)
+version: 0.1.0
+author: core
+skill: javascript
+description: Read broken JavaScript, fix it, and pass the hidden tests. (test_cases validator, node)
+difficulty: beginner
+schema_version: 1
+tags: [javascript, fix-bug]
+license: MIT
+min_version: "0.1.0"
+contributor: core

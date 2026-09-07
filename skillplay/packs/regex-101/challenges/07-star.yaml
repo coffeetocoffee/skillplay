@@ -1,0 +1,20 @@
+id: regex-star-01
+skill: regex
+title: Zero or more with *
+topic: quantifier
+difficulty: 2
+xp: 15
+type: regex_build
+prompt: |
+  Write a pattern that matches "a" followed by zero or more "b"s.
+context: {}
+answer:
+  value: "^ab*$"
+validation:
+  mode: regex_tester
+  must_match: ["a", "ab", "abbb"]
+  must_not_match: ["b", "ba"]
+hints:
+  - "`*` means zero or more of the preceding token."
+explanation: |
+  `ab*` matches "a", "ab", "abbb", but not "ba" (the 'a' must come first).

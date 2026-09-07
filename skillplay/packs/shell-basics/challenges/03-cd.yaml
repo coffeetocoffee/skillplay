@@ -1,0 +1,16 @@
+id: sh-cd-01
+title: Go home
+topic: navigation
+difficulty: 1
+xp: 10
+type: exact
+prompt: |
+  Type the command that changes into your home directory.
+answer:
+  value: "cd ~"
+validation:
+  mode: exact
+hints:
+  - "`~` is the home-directory shorthand; `cd` changes directory."
+explanation: |
+  `cd ~` changes to the home directory.

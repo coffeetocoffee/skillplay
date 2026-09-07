@@ -1,0 +1,20 @@
+id: regex-nondigit-01
+skill: regex
+title: Match a non-digit
+topic: metachar
+difficulty: 1
+xp: 10
+type: regex_build
+prompt: |
+  Write a pattern that matches any character that is NOT a digit.
+context: {}
+answer:
+  value: '\D'
+validation:
+  mode: regex_tester
+  must_match: ["abc", "a1b"]
+  must_not_match: ["123", "9"]
+hints:
+  - "`\\D` is the negation of `\\d`."
+explanation: |
+  `\D` matches any character that is not a digit.

@@ -1,0 +1,16 @@
+id: sh-ls-01
+title: List files
+topic: navigation
+difficulty: 1
+xp: 10
+type: exact
+prompt: |
+  Type the command that lists the files in the current directory.
+answer:
+  value: "ls"
+validation:
+  mode: exact
+hints:
+  - "Short for 'list'."
+explanation: |
+  `ls` lists directory contents.

@@ -1,0 +1,28 @@
+id: git-mc-clone-01
+prerequisites: [git-init-01]
+skill: git
+title: What does clone do?
+topic: clone
+difficulty: 2
+xp: 15
+type: multiple_choice
+prompt: |
+  What does `git clone <url>` do?
+options:
+  - id: a
+    text: "Creates an empty local repository"
+  - id: b
+    text: "Downloads a remote repo and its history into a new local directory"
+  - id: c
+    text: "Uploads your local commits to the server"
+  - id: d
+    text: "Deletes the remote repository"
+answer:
+  value: "b"
+validation:
+  mode: multiple_choice
+  answer_id: "b"
+hints:
+  - "clone is the read-side counterpart of push."
+explanation: |
+  `git clone` copies the entire remote repository, including history, locally.

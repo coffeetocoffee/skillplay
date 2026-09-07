@@ -1,0 +1,41 @@
+id: ds-reverse-01
+title: Reverse a list
+topic: lists
+difficulty: 2
+xp: 20
+type: fix_bug
+prompt: |
+  `reverse(lst)` should return a new list with the elements reversed, but it
+  returns the original unchanged. Fix it so that reverse([1, 2, 3]) == [3, 2, 1].
+
+      def reverse(lst):
+          return lst   # BUG: returns the list unchanged
+answer:
+  reference_code: |
+    def reverse(lst):
+        return lst[::-1]
+validation:
+  mode: test_cases
+  lang: python
+  function: reverse
+  test_cases:
+    - args: [[1, 2, 3]]
+      expected: [3, 2, 1]
+    - args: [[5]]
+      expected: [5]
+    - args: [[]]
+      expected: []
+hints:
+  - "Slicing with a negative step reverses a sequence."
+explanation: |
+  `lst[::-1]` produces a reversed copy of the list.
+translations:
+  es:
+    title: Invierte una lista
+    prompt: |
+      `reverse(lst)` debe devolver una nueva lista con los elementos invertidos, pero
+      devuelve la original sin cambios. Corrígelo para que reverse([1, 2, 3]) == [3, 2, 1].
+    hints:
+      - "El rebanado con paso negativo invierte una secuencia."
+    explanation: |
+      `lst[::-1]` produce una copia invertida de la lista.

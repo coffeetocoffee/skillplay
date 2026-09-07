@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "skillplay pack manifest (pack.yaml)",
+  "type": "object",
+  "required": ["id", "name", "version", "skill"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+    "name": {"type": "string"},
+    "version": {"type": "string"},
+    "author": {"type": "string"},
+    "skill": {"type": "string"},
+    "description": {"type": "string"},
+    "difficulty": {"type": "string", "enum": ["beginner", "intermediate", "advanced"]},
+    "schema_version": {"type": "integer", "minimum": 1},
+    "tags": {"type": "array", "items": {"type": "string"}},
+    "license": {"type": "string"},
+    "min_version": {"type": "string"},
+    "contributor": {"type": "string"},
+    "entry": {"type": "string", "default": "challenges/*.yaml"},
+    "capstone": {"type": "boolean", "description": "V2: this pack is a capstone that builds a portfolio artifact"},
+    "artifact": {
+      "type": "object",
+      "properties": {
+        "filename": {"type": "string"},
+        "lang": {"type": "string", "enum": ["python", "javascript"]},
+        "run": {"type": "string", "description": "Optional command to run the built artifact"}
+      }
+    }
+  },
+  "additionalProperties": false
+}

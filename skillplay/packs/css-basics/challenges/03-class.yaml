@@ -1,0 +1,16 @@
+id: css-sel-03
+title: Target by class
+topic: selectors
+difficulty: 1
+xp: 10
+type: exact
+prompt: |
+  Write the CSS selector that targets every element with class="card".
+answer:
+  value: ".card"
+validation:
+  mode: exact
+hints:
+  - "The `.` prefix selects by class."
+explanation: |
+  `.card` is a class selector — it matches all elements carrying that class.

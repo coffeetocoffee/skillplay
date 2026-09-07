@@ -1,0 +1,20 @@
+id: regex-alt-01
+skill: regex
+title: Alternation
+topic: group
+difficulty: 2
+xp: 15
+type: regex_build
+prompt: |
+  Write a pattern that matches either "cat" or "dog".
+context: {}
+answer:
+  value: "cat|dog"
+validation:
+  mode: regex_tester
+  must_match: ["cat", "dog", "a dog and cat"]
+  must_not_match: ["bird", "fish"]
+hints:
+  - "The pipe `|` means 'or'."
+explanation: |
+  `cat|dog` matches either alternative.

@@ -1,0 +1,20 @@
+id: regex-group-01
+skill: regex
+title: Repeated group
+topic: group
+difficulty: 3
+xp: 20
+type: regex_build
+prompt: |
+  Write a pattern that matches one or more repeats of "ab" (e.g. "ab", "abab").
+context: {}
+answer:
+  value: "^(ab)+$"
+validation:
+  mode: regex_tester
+  must_match: ["ab", "abab"]
+  must_not_match: ["a", "aba"]
+hints:
+  - "Parentheses group tokens so a quantifier applies to the whole group."
+explanation: |
+  `(ab)+` requires the sequence "ab" to repeat at least once.

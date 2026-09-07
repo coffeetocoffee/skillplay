@@ -1,0 +1,41 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "skillplay"
+version = "1.1.0"
+description = "Learn-by-Play TUI — learn dev skills by playing bite-sized challenges"
+requires-python = ">=3.11"
+dependencies = [
+    "textual>=0.83",
+    "rich>=13.7",
+    "pyyaml>=6.0",
+    "platformdirs>=4.2",
+    "cryptography>=42.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+
+[project.scripts]
+skillplay = "skillplay.__main__:main"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "UP", "RUF"]
+ignore = ["E501"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["skillplay"]
+
+[tool.ruff.lint.per-file-ignores]
+# Smoke tests intentionally insert the repo root on sys.path before importing.
+"tests/smoke_core.py" = ["E402"]
+"tests/smoke_tui.py" = ["E402"]
+
+[tool.ruff.format]
+quote-style = "double"

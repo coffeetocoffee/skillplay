@@ -1,0 +1,24 @@
+id: sql-between-01
+skill: sql
+title: Range filter with BETWEEN
+topic: where
+difficulty: 2
+xp: 15
+type: sql_query
+prompt: |
+  Return the names of users whose age is between 25 and 35 inclusive.
+context:
+  db_seed_sql: |
+    CREATE TABLE users(name TEXT, age INT, city TEXT);
+    INSERT INTO users VALUES ('ana', 25, 'london'), ('bob', 35, 'paris'), ('cid', 40, 'london'), ('dax', 22, 'paris');
+  schema_preview: "users(name TEXT, age INT, city TEXT)"
+answer:
+  reference_sql: "SELECT name FROM users WHERE age BETWEEN 25 AND 35"
+validation:
+  mode: sql_result
+  order_matters: false
+  normalize: true
+hints:
+  - "BETWEEN low AND high is inclusive on both ends."
+explanation: |
+  `BETWEEN a AND b` is inclusive; it is equivalent to `>= a AND <= b`.

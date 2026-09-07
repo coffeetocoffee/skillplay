@@ -1,0 +1,31 @@
+id: fb-max-01
+title: Fix the max function
+topic: conditionals
+difficulty: 2
+xp: 20
+type: fix_bug
+prompt: |
+  `max2(a, b)` should return the larger of two numbers. It always returns `a`.
+  Fix it so that max2(1, 5) == 5.
+
+      def max2(a, b):
+          return a   # BUG: ignores b
+answer:
+  reference_code: |
+    def max2(a, b):
+        return a if a > b else b
+validation:
+  mode: test_cases
+  lang: python
+  function: max2
+  test_cases:
+    - args: [1, 5]
+      expected: 5
+    - args: [9, 2]
+      expected: 9
+    - args: [4, 4]
+      expected: 4
+hints:
+  - "Compare a and b, and return the greater one (handle the equal case too)."
+explanation: |
+  A conditional picks the larger argument instead of always returning `a`.

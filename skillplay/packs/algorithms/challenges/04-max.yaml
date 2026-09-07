@@ -1,0 +1,31 @@
+id: alg-max-01
+title: Maximum of a list
+topic: search
+difficulty: 2
+xp: 20
+type: fix_bug
+prompt: |
+  `find_max(lst)` should return the largest element, but it always returns the
+  first one. Fix it so that find_max([1, 5, 3]) == 5.
+
+      def find_max(lst):
+          return lst[0]   # BUG: ignores every other element
+answer:
+  reference_code: |
+    def find_max(lst):
+        return max(lst)
+validation:
+  mode: test_cases
+  lang: python
+  function: find_max
+  test_cases:
+    - args: [[1, 5, 3]]
+      expected: 5
+    - args: [[-1, -2, -3]]
+      expected: -1
+    - args: [[0]]
+      expected: 0
+hints:
+  - "Python's built-in `max` already does this."
+explanation: |
+  `max(lst)` returns the greatest element of the list.

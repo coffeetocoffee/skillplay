@@ -1,0 +1,16 @@
+id: css-sel-02
+title: Target by id
+topic: selectors
+difficulty: 1
+xp: 10
+type: exact
+prompt: |
+  Write the CSS selector that targets the single element with id="main".
+answer:
+  value: "#main"
+validation:
+  mode: exact
+hints:
+  - "The `#` prefix selects by id."
+explanation: |
+  `#main` is an id selector and matches exactly one element.

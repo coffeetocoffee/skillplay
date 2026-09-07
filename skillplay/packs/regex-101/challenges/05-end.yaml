@@ -1,0 +1,20 @@
+id: regex-end-01
+skill: regex
+title: Anchor at end
+topic: anchor
+difficulty: 1
+xp: 10
+type: regex_build
+prompt: |
+  Write a pattern that matches strings ending with "xyz".
+context: {}
+answer:
+  value: "xyz$"
+validation:
+  mode: regex_tester
+  must_match: ["123 xyz", "xyz"]
+  must_not_match: ["xyz now", "axyzx"]
+hints:
+  - "`$` anchors the match to the end of the string."
+explanation: |
+  `xyz$` requires "xyz" at the very end.

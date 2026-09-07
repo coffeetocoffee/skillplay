@@ -1,0 +1,41 @@
+id: ds-last-01
+title: Return the last element
+topic: lists
+difficulty: 1
+xp: 15
+type: fix_bug
+prompt: |
+  `last(lst)` should return the last element of `lst`, but it returns the first.
+  Fix it so that last([1, 2, 3]) == 3 and last([7]) == 7.
+
+      def last(lst):
+          return lst[0]   # BUG: returns first, not last
+answer:
+  reference_code: |
+    def last(lst):
+        return lst[-1]
+validation:
+  mode: test_cases
+  lang: python
+  function: last
+  test_cases:
+    - args: [[1, 2, 3]]
+      expected: 3
+    - args: [[7]]
+      expected: 7
+    - args: [["a", "b"]]
+      expected: "b"
+hints:
+  - "Negative indexing counts from the end; -1 is the last element."
+explanation: |
+  `lst[-1]` accesses the final item of a list.
+translations:
+  es:
+    title: Devuelve el último elemento
+    prompt: |
+      `last(lst)` debe devolver el último elemento de `lst`, pero devuelve el primero.
+      Corrígelo para que last([1, 2, 3]) == 3 y last([7]) == 7.
+    hints:
+      - "El indexado negativo cuenta desde el final; -1 es el último elemento."
+    explanation: |
+      `lst[-1]` accede al último elemento de una lista.

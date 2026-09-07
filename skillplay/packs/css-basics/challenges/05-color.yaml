@@ -1,0 +1,20 @@
+id: css-prop-01
+title: Which property sets text color?
+topic: properties
+difficulty: 1
+xp: 10
+type: multiple_choice
+prompt: |
+  Which CSS property changes the color of the text?
+options:
+  - {id: a, text: "color"}
+  - {id: b, text: "background-color"}
+  - {id: c, text: "font-family"}
+  - {id: d, text: "border"}
+validation:
+  mode: multiple_choice
+  answer_id: a
+hints:
+  - "It is the short, unprefixed word for the foreground color."
+explanation: |
+  `color` sets the text (foreground) color.

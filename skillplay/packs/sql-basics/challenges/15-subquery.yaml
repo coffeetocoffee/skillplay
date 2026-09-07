@@ -1,0 +1,24 @@
+id: sql-subquery-01
+skill: sql
+title: Filter with a subquery
+topic: subquery
+difficulty: 3
+xp: 25
+type: sql_query
+prompt: |
+  Return the names of products whose price is above the average price.
+context:
+  db_seed_sql: |
+    CREATE TABLE products(id INT, name TEXT, price INT);
+    INSERT INTO products VALUES (1, 'a', 10), (2, 'b', 30), (3, 'c', 20), (4, 'd', 50);
+  schema_preview: "products(id, name, price)"
+answer:
+  reference_sql: "SELECT name FROM products WHERE price > (SELECT AVG(price) FROM products)"
+validation:
+  mode: sql_result
+  order_matters: false
+  normalize: true
+hints:
+  - "A subquery in parentheses computes the average; compare price against it."
+explanation: |
+  The subquery `(SELECT AVG(price) FROM products)` yields 27.5; rows above it are kept.

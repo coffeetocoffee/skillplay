@@ -1,0 +1,33 @@
+id: fbjs-double-01
+title: Fix the double function
+topic: functions
+difficulty: 1
+xp: 15
+type: fix_bug
+prompt: |
+  `double(n)` should return `n * 2`, but it adds instead. Fix it so that
+  double(4) == 8 and double(-3) == -6.
+
+      function double(n) {
+        return n + 2;   // BUG: adds 2 instead of multiplying
+      }
+answer:
+  reference_code: |
+    function double(n) {
+      return n * 2;
+    }
+validation:
+  mode: test_cases
+  lang: js
+  function: double
+  test_cases:
+    - args: [4]
+      expected: 8
+    - args: [-3]
+      expected: -6
+    - args: [0]
+      expected: 0
+hints:
+  - "Replace `+ 2` with the multiplication operator and `n`."
+explanation: |
+  `double` must multiply by two — the bug added a constant instead.

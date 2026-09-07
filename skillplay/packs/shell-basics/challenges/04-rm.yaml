@@ -1,0 +1,16 @@
+id: sh-rm-01
+title: Remove a file
+topic: files
+difficulty: 1
+xp: 10
+type: exact
+prompt: |
+  Type the command that removes (deletes) the file named notes.txt.
+answer:
+  value: "rm notes.txt"
+validation:
+  mode: exact
+hints:
+  - "`rm` removes files; give it the filename as an argument."
+explanation: |
+  `rm notes.txt` deletes the file notes.txt.

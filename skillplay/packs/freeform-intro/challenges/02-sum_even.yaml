@@ -1,0 +1,34 @@
+id: ff-sum-even-01
+title: Sum the evens
+topic: lists
+difficulty: 2
+xp: 20
+type: freeform
+prompt: |
+  Write a function `sum_even(nums)` that returns the sum of all even numbers
+  in the list `nums`. Hidden tests check several inputs.
+starter_code: |
+  def sum_even(nums):
+      # your code here
+      pass
+answer:
+  reference_code: |
+    def sum_even(nums):
+        return sum(n for n in nums if n % 2 == 0)
+validation:
+  mode: freeform
+  lang: python
+  function: sum_even
+  test_cases:
+    - args: [[1, 2, 3, 4]]
+      expected: 6
+    - args: [[1, 3, 5]]
+      expected: 0
+    - args: [[2, 4, 6, 8]]
+      expected: 20
+    - args: [[]]
+      expected: 0
+hints:
+  - "Filter the list to items where n % 2 == 0, then sum them."
+explanation: |
+  A generator expression `sum(n for n in nums if n % 2 == 0)` adds only evens.

@@ -1,0 +1,8 @@
+[
+  {"name": "css-basics", "skill": "css", "description": "CSS selectors and core properties - learn CSS by doing.", "path": "css-basics", "rating": 4.5, "downloads": 1280},
+  {"name": "shell-basics", "skill": "shell", "description": "Everyday command-line commands - learn the shell by doing.", "path": "shell-basics", "rating": 4.2, "downloads": 940},
+  {"name": "http-rest", "skill": "http", "description": "HTTP verbs, status codes, and headers - learn REST by doing.", "path": "http-rest", "rating": 4.0, "downloads": 610},
+  {"name": "data-structures", "skill": "python", "description": "Core list operations in Python (test_cases).", "path": "data-structures", "rating": 4.7, "downloads": 1500},
+  {"name": "algorithms", "skill": "algorithms", "description": "Classic algorithms in Python (test_cases).", "path": "algorithms", "rating": 4.6, "downloads": 1320},
+  {"name": "fix-bug-js", "skill": "javascript", "description": "Read broken JavaScript, fix it, pass the tests (node).", "path": "fix-bug-js", "rating": 4.3, "downloads": 870}
+]

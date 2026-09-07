@@ -1,0 +1,12 @@
+id: freeform-intro
+name: Freeform (Write from Scratch)
+version: 0.1.0
+author: core
+skill: python
+description: Build functions from scratch against hidden tests. (freeform validator)
+difficulty: beginner
+schema_version: 1
+tags: [python, freeform]
+license: MIT
+min_version: "1.1.0"
+contributor: core

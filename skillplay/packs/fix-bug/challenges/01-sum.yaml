@@ -1,0 +1,31 @@
+id: fb-sum-01
+title: Fix the sum function
+topic: functions
+difficulty: 1
+xp: 15
+type: fix_bug
+prompt: |
+  The function `add` should return the sum of two numbers, but it's broken.
+  Fix it so that add(2, 3) == 5.
+
+      def add(a, b):
+          return a - b   # BUG: wrong operator
+answer:
+  reference_code: |
+    def add(a, b):
+        return a + b
+validation:
+  mode: test_cases
+  lang: python
+  function: add
+  test_cases:
+    - args: [2, 3]
+      expected: 5
+    - args: [-1, 1]
+      expected: 0
+    - args: [0, 0]
+      expected: 0
+hints:
+  - "The body uses `-`; it should combine the two arguments additively."
+explanation: |
+  `add` must add both arguments — the bug was using subtraction.

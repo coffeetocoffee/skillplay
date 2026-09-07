@@ -1,0 +1,10 @@
+id: shell-basics
+name: Shell Basics
+version: 0.1.0
+author: core
+skill: shell
+description: Everyday command-line commands — learn the shell by doing.
+difficulty: beginner
+schema_version: 1
+tags: [shell, beginner]
+license: MIT

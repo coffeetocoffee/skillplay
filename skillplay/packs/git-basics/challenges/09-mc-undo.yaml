@@ -1,0 +1,29 @@
+id: git-mc-undo-01
+prerequisites: [git-commit-01]
+skill: git
+title: Undo a commit
+topic: undo
+difficulty: 3
+xp: 20
+type: multiple_choice
+prompt: |
+  Which command safely undoes the most recent commit while keeping your
+  working-tree changes?
+options:
+  - id: a
+    text: "git reset --hard HEAD~1"
+  - id: b
+    text: "git revert HEAD"
+  - id: c
+    text: "git checkout ."
+  - id: d
+    text: "rm -rf .git"
+answer:
+  value: "b"
+validation:
+  mode: multiple_choice
+  answer_id: "b"
+hints:
+  - "--hard would discard the changes too."
+explanation: |
+  `git revert HEAD` makes a new commit that reverses the last one, preserving history.

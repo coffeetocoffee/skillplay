@@ -1,0 +1,21 @@
+id: http-auth-01
+title: Identify the client
+topic: headers
+difficulty: 2
+xp: 15
+type: multiple_choice
+prompt: |
+  Which header is used to send credentials (a token or username) to identify
+  the calling client?
+options:
+  - {id: a, text: "Authorization"}
+  - {id: b, text: "Content-Type"}
+  - {id: c, text: "Accept"}
+  - {id: d, text: "User-Agent"}
+validation:
+  mode: multiple_choice
+  answer_id: a
+hints:
+  - "Its name suggests 'who is allowed to do this'."
+explanation: |
+  The `Authorization` header carries credentials/tokens for authentication.

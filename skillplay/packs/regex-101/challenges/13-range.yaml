@@ -1,0 +1,20 @@
+id: regex-range-01
+skill: regex
+title: Quantifier range
+topic: quantifier
+difficulty: 3
+xp: 20
+type: regex_build
+prompt: |
+  Write a pattern that matches a run of 2 to 4 digits.
+context: {}
+answer:
+  value: '^\d{2,4}$'
+validation:
+  mode: regex_tester
+  must_match: ["42", "1234"]
+  must_not_match: ["1", "12345"]
+hints:
+  - "`{min,max}` sets an inclusive repeat range."
+explanation: |
+  `\d{2,4}` matches between 2 and 4 digits.

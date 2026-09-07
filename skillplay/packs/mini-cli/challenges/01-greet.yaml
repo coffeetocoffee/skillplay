@@ -1,0 +1,33 @@
+id: mini-cli-01
+title: Greet a name
+topic: functions
+difficulty: 1
+xp: 15
+type: freeform
+prerequisites: []
+prompt: |
+  Write a function `greet(name)` that returns the string "Hello, <name>!"
+  for any given name. The tests are hidden — construct it from scratch.
+starter_code: |
+  def greet(name):
+      # your code here
+      pass
+answer:
+  reference_code: |
+    def greet(name):
+        return f"Hello, {name}!"
+validation:
+  mode: freeform
+  lang: python
+  function: greet
+  test_cases:
+    - args: ["Ana"]
+      expected: "Hello, Ana!"
+    - args: ["World"]
+      expected: "Hello, World!"
+    - args: [""]
+      expected: "Hello, !"
+hints:
+  - "Use an f-string to interpolate the name into the greeting."
+explanation: |
+  `f"Hello, {name}!"` builds the greeting by inserting the argument.

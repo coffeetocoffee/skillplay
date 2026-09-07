@@ -1,0 +1,38 @@
+id: alg-prime-01
+title: Prime check
+topic: number-theory
+difficulty: 3
+xp: 25
+type: fix_bug
+prompt: |
+  `is_prime(n)` should return True when `n` is prime, but it always returns
+  True. Fix it so that is_prime(7) == True and is_prime(4) == False.
+
+      def is_prime(n):
+          return True   # BUG: never actually tests divisibility
+answer:
+  reference_code: |
+    def is_prime(n):
+        if n < 2:
+            return False
+        for i in range(2, int(n ** 0.5) + 1):
+            if n % i == 0:
+                return False
+        return True
+validation:
+  mode: test_cases
+  lang: python
+  function: is_prime
+  test_cases:
+    - args: [2]
+      expected: true
+    - args: [4]
+      expected: false
+    - args: [7]
+      expected: true
+    - args: [1]
+      expected: false
+hints:
+  - "Check divisors from 2 up to sqrt(n); rule out n < 2."
+explanation: |
+  A number is prime only if no integer from 2..sqrt(n) divides it (and n >= 2).

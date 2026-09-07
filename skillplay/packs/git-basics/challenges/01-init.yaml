@@ -1,0 +1,19 @@
+id: git-init-01
+skill: git
+title: Initialize a repo
+topic: init
+difficulty: 1
+xp: 10
+type: git_command
+prompt: |
+  What command creates a new Git repository in the current directory?
+answer:
+  value: "git init"
+validation:
+  mode: exact
+  case_insensitive: true
+  answers: ["git init"]
+hints:
+  - "init stands for 'initialize'."
+explanation: |
+  `git init` creates the `.git` directory and initializes a repository.

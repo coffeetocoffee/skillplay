@@ -1,0 +1,16 @@
+id: sh-pwd-01
+title: Current directory
+topic: navigation
+difficulty: 1
+xp: 10
+type: exact
+prompt: |
+  Type the command that prints the absolute path of the current working directory.
+answer:
+  value: "pwd"
+validation:
+  mode: exact
+hints:
+  - "Print Working Directory."
+explanation: |
+  `pwd` prints the current working directory.

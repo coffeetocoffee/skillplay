@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "skillplay challenge (challenges/*.yaml)",
+  "type": "object",
+  "required": ["id", "type"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+    "skill": {"type": "string"},
+    "title": {"type": "string"},
+    "topic": {"type": "string"},
+    "difficulty": {"type": "integer", "minimum": 1, "maximum": 5},
+    "xp": {"type": "integer", "minimum": 1},
+    "type": {"type": "string"},
+    "prompt": {"type": "string"},
+    "answer": {
+      "type": "object",
+      "properties": {
+        "value": {"type": "string"},
+        "reference_sql": {"type": "string"},
+        "reference_code": {"type": "string"}
+      }
+    },
+    "validation": {
+      "type": "object",
+      "required": ["mode"],
+      "properties": {
+        "mode": {"type": "string", "enum": ["exact", "regex_tester", "multiple_choice", "sql_result", "test_cases", "freeform"]},
+        "normalize": {"type": "boolean"},
+        "order_matters": {"type": "boolean"},
+        "case_insensitive": {"type": "boolean"},
+        "strip": {"type": "boolean"},
+        "answers": {"type": "array", "items": {"type": "string"}},
+        "answer_id": {"type": "string"},
+        "must_match": {"type": "array", "items": {"type": "string"}},
+        "must_not_match": {"type": "array", "items": {"type": "string"}},
+        "lang": {"type": "string", "enum": ["python", "js", "javascript"]},
+        "function": {"type": "string"},
+        "setup": {"type": "string"},
+        "test_cases": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["args", "expected"],
+            "properties": {
+              "args": {"type": "array"},
+              "expected": {}
+            }
+          }
+        }
+      }
+    },
+    "context": {
+      "type": "object",
+      "properties": {
+        "db_seed_sql": {"type": "string"},
+        "schema_preview": {"type": "string"}
+      }
+    },
+    "options": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "text"],
+        "properties": {
+          "id": {"type": "string"},
+          "text": {"type": "string"}
+        }
+      }
+    },
+    "hints": {"type": "array", "items": {"type": "string"}},
+    "explanation": {"type": "string"},
+    "starter_code": {"type": "string"},
+    "prerequisites": {
+      "type": "array",
+      "items": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+      "description": "V4: challenge ids that must be answered correctly before this one unlocks."
+    }
+  },
+  "additionalProperties": false
+}

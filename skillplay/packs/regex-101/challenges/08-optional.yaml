@@ -1,0 +1,20 @@
+id: regex-optional-01
+skill: regex
+title: Optional with ?
+topic: quantifier
+difficulty: 2
+xp: 15
+type: regex_build
+prompt: |
+  Write a pattern that matches both "color" and "colour".
+context: {}
+answer:
+  value: "colou?r"
+validation:
+  mode: regex_tester
+  must_match: ["color", "colour"]
+  must_not_match: ["colur", "cool"]
+hints:
+  - "`?` makes the preceding token optional (zero or one)."
+explanation: |
+  `colou?r` optionally matches the "u".

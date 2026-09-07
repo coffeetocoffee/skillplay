@@ -1,0 +1,24 @@
+id: sql-order-01
+skill: sql
+title: Order results
+topic: order_by
+difficulty: 2
+xp: 15
+type: sql_query
+prompt: |
+  List all users ordered by age from oldest to youngest.
+context:
+  db_seed_sql: |
+    CREATE TABLE users(name TEXT, age INT);
+    INSERT INTO users VALUES ('ana', 25), ('bob', 35), ('cid', 40);
+  schema_preview: "users(name TEXT, age INT)"
+answer:
+  reference_sql: "SELECT * FROM users ORDER BY age DESC"
+validation:
+  mode: sql_result
+  order_matters: true
+  normalize: false
+hints:
+  - "ORDER BY age DESC sorts descending."
+explanation: |
+  `ORDER BY col DESC` sorts rows; ASC (default) is ascending.

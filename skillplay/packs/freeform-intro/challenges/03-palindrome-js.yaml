@@ -1,0 +1,33 @@
+id: ff-palindrome-js-01
+title: Palindrome check (JS)
+topic: strings
+difficulty: 2
+xp: 20
+type: freeform
+prompt: |
+  Write a JavaScript function `isPalindrome(text)` that returns true if `text`
+  reads the same forwards and backwards, else false. Tests are hidden.
+starter_code: |
+  function isPalindrome(text) {
+    // your code here
+  }
+answer:
+  reference_code: |
+    function isPalindrome(text) {
+      return text === text.split('').reverse().join('');
+    }
+validation:
+  mode: freeform
+  lang: javascript
+  function: isPalindrome
+  test_cases:
+    - args: ["racecar"]
+      expected: true
+    - args: ["hello"]
+      expected: false
+    - args: ["a"]
+      expected: true
+hints:
+  - "Compare the string to its reversed form (split, reverse, join)."
+explanation: |
+  `text === text.split('').reverse().join('')` is true only for palindromes.

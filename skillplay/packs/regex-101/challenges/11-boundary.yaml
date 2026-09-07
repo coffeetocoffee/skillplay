@@ -1,0 +1,20 @@
+id: regex-boundary-01
+skill: regex
+title: Word boundary
+topic: anchor
+difficulty: 2
+xp: 15
+type: regex_build
+prompt: |
+  Write a pattern that matches the whole word "cat" (not inside other words).
+context: {}
+answer:
+  value: '\bcat\b'
+validation:
+  mode: regex_tester
+  must_match: ["cat", "the cat sat"]
+  must_not_match: ["category", "scat"]
+hints:
+  - "`\\b` is a zero-width word boundary."
+explanation: |
+  `\bcat\b` matches "cat" only as a standalone word.

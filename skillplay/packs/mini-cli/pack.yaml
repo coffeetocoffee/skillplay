@@ -1,0 +1,17 @@
+id: mini-cli
+name: Mini CLI Capstone
+version: 0.1.0
+author: core
+skill: python
+description: Build a tiny command-line tool from scratch, one function at a time.
+difficulty: beginner
+schema_version: 1
+tags: [python, capstone, freeform]
+license: MIT
+min_version: "1.1.0"
+contributor: core
+capstone: true
+artifact:
+  filename: mini_cli.py
+  lang: python
+  run: "python mini_cli.py"

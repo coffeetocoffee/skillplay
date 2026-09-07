@@ -1,0 +1,20 @@
+id: regex-anchored-01
+skill: regex
+title: Anchored exact length
+topic: anchor
+difficulty: 3
+xp: 20
+type: regex_build
+prompt: |
+  Write a pattern that matches a string of EXACTLY three digits (no more, no less).
+context: {}
+answer:
+  value: '^\d{3}$'
+validation:
+  mode: regex_tester
+  must_match: ["123", "007"]
+  must_not_match: ["12", "1234", "12a3"]
+hints:
+  - "Combine `^` and `$` with a `{3}` quantifier to pin both ends."
+explanation: |
+  `^\d{3}$` anchors both ends so only a 3-digit string matches.

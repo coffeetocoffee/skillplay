@@ -1,0 +1,24 @@
+id: sql-limit-01
+skill: sql
+title: Limit rows
+topic: limit
+difficulty: 2
+xp: 15
+type: sql_query
+prompt: |
+  Return only the first two users (any order). Use LIMIT.
+context:
+  db_seed_sql: |
+    CREATE TABLE users(name TEXT, age INT);
+    INSERT INTO users VALUES ('ana', 25), ('bob', 35), ('cid', 40);
+  schema_preview: "users(name TEXT, age INT)"
+answer:
+  reference_sql: "SELECT * FROM users LIMIT 2"
+validation:
+  mode: sql_result
+  order_matters: false
+  normalize: true
+hints:
+  - "Add LIMIT 2 at the end of the query."
+explanation: |
+  `LIMIT n` caps the number of rows returned.

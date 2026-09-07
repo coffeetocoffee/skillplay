@@ -1,0 +1,20 @@
+id: git-add-01
+prerequisites: [git-init-01]
+skill: git
+title: Stage all changes
+topic: add
+difficulty: 1
+xp: 10
+type: git_command
+prompt: |
+  What command stages all modified and new files in the current directory?
+answer:
+  value: "git add ."
+validation:
+  mode: exact
+  case_insensitive: true
+  answers: ["git add .", "git add -A", "git add --all"]
+hints:
+  - "The dot means 'the current directory'."
+explanation: |
+  `git add .` stages every change beneath the current path.

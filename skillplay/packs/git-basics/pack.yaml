@@ -1,0 +1,10 @@
+id: git-basics
+name: Git Basics
+version: 0.1.0
+author: core
+skill: git
+description: Core Git commands and concepts — type the command or pick the right option.
+difficulty: beginner
+schema_version: 1
+tags: [git, beginner]
+entry: challenges/*.yaml

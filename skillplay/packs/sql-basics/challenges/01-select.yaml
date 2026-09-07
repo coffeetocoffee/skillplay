@@ -1,0 +1,24 @@
+id: sql-select-01
+skill: sql
+title: Select all columns
+topic: select
+difficulty: 1
+xp: 10
+type: sql_query
+prompt: |
+  Return every column and row from the `users` table.
+context:
+  db_seed_sql: |
+    CREATE TABLE users(name TEXT, age INT);
+    INSERT INTO users VALUES ('ana', 25), ('bob', 35);
+  schema_preview: "users(name TEXT, age INT)"
+answer:
+  reference_sql: "SELECT * FROM users"
+validation:
+  mode: sql_result
+  order_matters: false
+  normalize: true
+hints:
+  - "Use the asterisk to mean 'all columns'."
+explanation: |
+  `SELECT * FROM users` projects every column for every row.

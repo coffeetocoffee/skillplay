@@ -1,0 +1,10 @@
+id: regex-101
+name: Regex 101
+version: 0.1.0
+author: core
+skill: regex
+description: Build regex patterns that match the right strings and reject the wrong ones.
+difficulty: beginner
+schema_version: 1
+tags: [regex, beginner]
+entry: challenges/*.yaml

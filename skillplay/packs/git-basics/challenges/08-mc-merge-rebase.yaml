@@ -1,0 +1,28 @@
+id: git-mc-merge-rebase-01
+prerequisites: [git-branch-01]
+skill: git
+title: Merge vs rebase
+topic: history
+difficulty: 3
+xp: 20
+type: multiple_choice
+prompt: |
+  What is the key difference between `git merge` and `git rebase`?
+options:
+  - id: a
+    text: "They are identical"
+  - id: b
+    text: "merge deletes commits; rebase keeps them"
+  - id: c
+    text: "merge creates a merge commit preserving history; rebase replays commits onto a new base for a linear history"
+  - id: d
+    text: "rebase only works on remote branches"
+answer:
+  value: "c"
+validation:
+  mode: multiple_choice
+  answer_id: "c"
+hints:
+  - "Think about whether a new commit is created."
+explanation: |
+  merge preserves a forked history with a merge commit; rebase rewrites commits onto a new base for a linear log.

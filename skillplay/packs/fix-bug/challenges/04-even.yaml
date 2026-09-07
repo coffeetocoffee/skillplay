@@ -1,0 +1,31 @@
+id: fb-even-01
+title: Fix the even check
+topic: operators
+difficulty: 2
+xp: 20
+type: fix_bug
+prompt: |
+  `is_even(n)` should return True when `n` is even. It returns the remainder
+  instead of a boolean. Fix it so that is_even(4) == True and is_even(3) == False.
+
+      def is_even(n):
+          return n % 2   # BUG: returns 0/1, not True/False
+answer:
+  reference_code: |
+    def is_even(n):
+        return n % 2 == 0
+validation:
+  mode: test_cases
+  lang: python
+  function: is_even
+  test_cases:
+    - args: [4]
+      expected: true
+    - args: [3]
+      expected: false
+    - args: [0]
+      expected: true
+hints:
+  - "Compare the remainder `n % 2` to 0 to get a boolean."
+explanation: |
+  `== 0` turns the remainder into a proper boolean.

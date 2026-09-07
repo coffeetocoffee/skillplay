@@ -1,0 +1,24 @@
+id: sql-count-01
+skill: sql
+title: Count rows
+topic: aggregate
+difficulty: 2
+xp: 20
+type: sql_query
+prompt: |
+  Count how many users are older than 30.
+context:
+  db_seed_sql: |
+    CREATE TABLE users(name TEXT, age INT);
+    INSERT INTO users VALUES ('ana', 25), ('bob', 35), ('cid', 40);
+  schema_preview: "users(name TEXT, age INT)"
+answer:
+  reference_sql: "SELECT COUNT(*) FROM users WHERE age > 30"
+validation:
+  mode: sql_result
+  order_matters: false
+  normalize: true
+hints:
+  - "COUNT(*) counts rows; combine with WHERE."
+explanation: |
+  `COUNT(*)` is an aggregate that returns a single count of matching rows.

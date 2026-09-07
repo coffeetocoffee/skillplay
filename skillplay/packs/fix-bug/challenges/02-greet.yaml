@@ -1,0 +1,31 @@
+id: fb-greet-01
+title: Fix the greeting
+topic: strings
+difficulty: 1
+xp: 15
+type: fix_bug
+prompt: |
+  `greet(name)` should return "Hi <name>". It currently returns just the name.
+  Fix it so that greet("Sam") == "Hi Sam".
+
+      def greet(name):
+          return name   # BUG: missing the "Hi " prefix
+answer:
+  reference_code: |
+    def greet(name):
+        return "Hi " + name
+validation:
+  mode: test_cases
+  lang: python
+  function: greet
+  test_cases:
+    - args: ["Sam"]
+      expected: "Hi Sam"
+    - args: [""]
+      expected: "Hi "
+    - args: ["Ada"]
+      expected: "Hi Ada"
+hints:
+  - "Concatenate the literal string \"Hi \" in front of `name`."
+explanation: |
+  String concatenation: prepend the constant greeting to the argument.

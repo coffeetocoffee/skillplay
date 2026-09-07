@@ -1,0 +1,20 @@
+id: git-branch-01
+prerequisites: [git-commit-01]
+skill: git
+title: Create a branch
+topic: branch
+difficulty: 2
+xp: 15
+type: git_command
+prompt: |
+  What command creates a new branch named "feature" without switching to it?
+answer:
+  value: "git branch feature"
+validation:
+  mode: exact
+  case_insensitive: true
+  answers: ["git branch feature"]
+hints:
+  - "branch is followed by the new name."
+explanation: |
+  `git branch <name>` creates a branch pointer at the current commit.

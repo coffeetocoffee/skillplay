@@ -1,0 +1,24 @@
+id: sql-where-01
+skill: sql
+title: Filter with WHERE
+topic: where
+difficulty: 1
+xp: 15
+type: sql_query
+prompt: |
+  Return the names of users who are older than 30.
+context:
+  db_seed_sql: |
+    CREATE TABLE users(name TEXT, age INT);
+    INSERT INTO users VALUES ('ana', 25), ('bob', 35), ('cid', 40);
+  schema_preview: "users(name TEXT, age INT)"
+answer:
+  reference_sql: "SELECT name FROM users WHERE age > 30"
+validation:
+  mode: sql_result
+  order_matters: false
+  normalize: true
+hints:
+  - "SELECT name FROM users WHERE age > 30"
+explanation: |
+  `WHERE` filters rows before they are projected.

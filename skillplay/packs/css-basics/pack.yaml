@@ -1,0 +1,10 @@
+id: css-basics
+name: CSS Basics
+version: 0.1.0
+author: core
+skill: css
+description: Selectors and core properties — learn CSS by doing.
+difficulty: beginner
+schema_version: 1
+tags: [css, beginner]
+license: MIT

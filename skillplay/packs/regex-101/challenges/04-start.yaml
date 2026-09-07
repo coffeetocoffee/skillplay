@@ -1,0 +1,20 @@
+id: regex-start-01
+skill: regex
+title: Anchor at start
+topic: anchor
+difficulty: 1
+xp: 10
+type: regex_build
+prompt: |
+  Write a pattern that matches strings beginning with "abc".
+context: {}
+answer:
+  value: "^abc"
+validation:
+  mode: regex_tester
+  must_match: ["abc def", "abcdef"]
+  must_not_match: ["xabc", " abc"]
+hints:
+  - "`^` anchors the match to the start of the string."
+explanation: |
+  `^abc` requires "abc" at the very beginning.

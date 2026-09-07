@@ -1,0 +1,20 @@
+id: regex-digit-01
+skill: regex
+title: Match any digit
+topic: metachar
+difficulty: 1
+xp: 10
+type: regex_build
+prompt: |
+  Write a pattern that matches a single digit (0-9) anywhere in the text.
+context: {}
+answer:
+  value: '\d'
+validation:
+  mode: regex_tester
+  must_match: ["7", "code 42"]
+  must_not_match: ["abc", "no digits here"]
+hints:
+  - "`\\d` matches any decimal digit."
+explanation: |
+  `\d` is a shorthand for `[0-9]`.

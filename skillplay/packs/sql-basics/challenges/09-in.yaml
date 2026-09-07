@@ -1,0 +1,24 @@
+id: sql-in-01
+skill: sql
+title: Match a set with IN
+topic: where
+difficulty: 2
+xp: 15
+type: sql_query
+prompt: |
+  Return the names of users whose city is either 'paris' or 'london'.
+context:
+  db_seed_sql: |
+    CREATE TABLE users(name TEXT, age INT, city TEXT);
+    INSERT INTO users VALUES ('ana', 25, 'london'), ('bob', 35, 'paris'), ('cid', 40, 'london'), ('dax', 22, 'paris');
+  schema_preview: "users(name TEXT, age INT, city TEXT)"
+answer:
+  reference_sql: "SELECT name FROM users WHERE city IN ('paris', 'london')"
+validation:
+  mode: sql_result
+  order_matters: false
+  normalize: true
+hints:
+  - "IN (...) is shorthand for several OR equality checks."
+explanation: |
+  `WHERE col IN (a, b, c)` matches rows whose value is in the list.

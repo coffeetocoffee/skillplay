@@ -1,0 +1,20 @@
+id: http-post-01
+title: Create a resource
+topic: verbs
+difficulty: 1
+xp: 10
+type: multiple_choice
+prompt: |
+  Which HTTP method is used to create a new resource on the server?
+options:
+  - {id: a, text: "GET"}
+  - {id: b, text: "POST"}
+  - {id: c, text: "PUT"}
+  - {id: d, text: "PATCH"}
+validation:
+  mode: multiple_choice
+  answer_id: b
+hints:
+  - "It submits data to be processed, often creating something."
+explanation: |
+  POST creates a new resource (or triggers processing).

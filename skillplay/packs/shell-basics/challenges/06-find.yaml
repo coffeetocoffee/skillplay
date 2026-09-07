@@ -1,0 +1,17 @@
+id: sh-find-01
+title: Find Python files
+topic: files
+difficulty: 2
+xp: 15
+type: exact
+prompt: |
+  Type the command that finds every file ending in .py, recursively, starting
+  from the current directory.
+answer:
+  value: "find . -name '*.py'"
+validation:
+  mode: exact
+hints:
+  - "`find .` walks the tree; `-name` matches a glob pattern."
+explanation: |
+  `find . -name '*.py'` locates all Python files under the current directory.

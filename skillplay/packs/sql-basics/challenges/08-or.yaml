@@ -1,0 +1,24 @@
+id: sql-or-01
+skill: sql
+title: Combine conditions with OR
+topic: where
+difficulty: 2
+xp: 15
+type: sql_query
+prompt: |
+  Return the names of users who are older than 38 OR live in 'paris'.
+context:
+  db_seed_sql: |
+    CREATE TABLE users(name TEXT, age INT, city TEXT);
+    INSERT INTO users VALUES ('ana', 25, 'london'), ('bob', 35, 'paris'), ('cid', 40, 'london'), ('dax', 22, 'paris');
+  schema_preview: "users(name TEXT, age INT, city TEXT)"
+answer:
+  reference_sql: "SELECT name FROM users WHERE age > 38 OR city = 'paris'"
+validation:
+  mode: sql_result
+  order_matters: false
+  normalize: true
+hints:
+  - "Use OR to require at least one condition to be true."
+explanation: |
+  `WHERE a OR b` keeps rows where either predicate holds.

@@ -1,0 +1,30 @@
+# Sample user config
+#
+# Copy to the skillplay data dir (next to progress.json) and rename to
+# `config.yaml`. All keys are optional; defaults are shown below.
+#
+#   Linux/macOS: ~/.local/share/skillplay/config.yaml
+#   Windows:     %LOCALAPPDATA%\skillplay\config.yaml
+
+# How many challenges per session (default 8).
+session_size: 8
+
+# Sound effects (default off; dependency-free beep via terminal bell / winsound).
+sound: false
+
+# Theme: dark | light | high_contrast  (respects NO_COLOR if set in the env).
+theme: dark
+
+# Language: en | es  (community packs may add more).
+language: en
+
+# Anonymous telemetry of low first-try rates. Local-only by default; set true to
+# also POST an anonymized aggregate (no names) to the leaderboard URL.
+telemetry: false
+
+# Opt-in online leaderboard (disabled until `url` is set — see `skillplay leaderboard --help`).
+# `url` is the BASE url of a `serve-leaderboard` instance (e.g. http://localhost:8000);
+# endpoints (/submit, /profile, /api/board, /u/<handle>) are appended automatically.
+leaderboard:
+  name: anon
+  # url: http://localhost:8000

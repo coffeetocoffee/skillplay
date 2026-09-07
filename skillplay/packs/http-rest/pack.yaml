@@ -1,0 +1,10 @@
+id: http-rest
+name: HTTP & REST
+version: 0.1.0
+author: core
+skill: http
+description: Verbs, status codes, and headers — learn HTTP/REST by doing.
+difficulty: beginner
+schema_version: 1
+tags: [http, rest, beginner]
+license: MIT

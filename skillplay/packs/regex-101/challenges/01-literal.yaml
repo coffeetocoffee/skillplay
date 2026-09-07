@@ -1,0 +1,20 @@
+id: regex-literal-01
+skill: regex
+title: Match a literal word
+topic: literal
+difficulty: 1
+xp: 10
+type: regex_build
+prompt: |
+  Write a pattern that matches the word "hello" as a whole word.
+context: {}
+answer:
+  value: '\bhello\b'
+validation:
+  mode: regex_tester
+  must_match: ["hello", "say hello now"]
+  must_not_match: ["hi", "Hello"]
+hints:
+  - "Use \\b word boundaries to anchor the whole word."
+explanation: |
+  `\bhello\b` matches the word "hello" but not "Hello" (case-sensitive) or substrings.

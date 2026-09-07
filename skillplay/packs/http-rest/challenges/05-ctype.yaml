@@ -1,0 +1,16 @@
+id: http-header-01
+title: Declare a JSON body
+topic: headers
+difficulty: 2
+xp: 15
+type: exact
+prompt: |
+  Type the HTTP header (name and value) that declares the request body is JSON.
+answer:
+  value: "Content-Type: application/json"
+validation:
+  mode: exact
+hints:
+  - "It tells the server how to interpret the body."
+explanation: |
+  `Content-Type: application/json` describes a JSON request/response body.

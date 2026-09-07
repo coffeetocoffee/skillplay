@@ -1,0 +1,20 @@
+id: regex-class-01
+skill: regex
+title: Character class
+topic: class
+difficulty: 2
+xp: 15
+type: regex_build
+prompt: |
+  Write a pattern that matches any single vowel (a, e, i, o, u).
+context: {}
+answer:
+  value: "[aeiou]"
+validation:
+  mode: regex_tester
+  must_match: ["apple", "egg"]
+  must_not_match: ["rhythm", "cry"]
+hints:
+  - "Square brackets list the allowed characters."
+explanation: |
+  `[aeiou]` matches one of the listed vowels.

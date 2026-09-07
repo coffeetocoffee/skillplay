@@ -1,0 +1,20 @@
+id: http-put-01
+title: Replace a resource
+topic: verbs
+difficulty: 2
+xp: 15
+type: multiple_choice
+prompt: |
+  Which HTTP method fully replaces an existing resource with the request body?
+options:
+  - {id: a, text: "GET"}
+  - {id: b, text: "POST"}
+  - {id: c, text: "PUT"}
+  - {id: d, text: "DELETE"}
+validation:
+  mode: multiple_choice
+  answer_id: c
+hints:
+  - "It is the verb you use when you know the resource's exact URL."
+explanation: |
+  PUT replaces the target resource entirely with the supplied body.

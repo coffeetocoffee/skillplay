@@ -1,0 +1,28 @@
+id: git-mc-stage-01
+prerequisites: [git-add-01]
+skill: git
+title: Which command stages changes?
+topic: add
+difficulty: 2
+xp: 15
+type: multiple_choice
+prompt: |
+  Which command stages all modified files in the working tree?
+options:
+  - id: a
+    text: "git commit -a"
+  - id: b
+    text: "git add ."
+  - id: c
+    text: "git push"
+  - id: d
+    text: "git status"
+answer:
+  value: "b"
+validation:
+  mode: multiple_choice
+  answer_id: "b"
+hints:
+  - "Staging is a distinct step before committing."
+explanation: |
+  `git add .` stages changes; `git commit -a` both stages and commits tracked files.
