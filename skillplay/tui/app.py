@@ -812,6 +812,15 @@ class ExamScreen(Screen):
                     )
                 else:
                     yield Static("    [dim](max level reached)[/dim]")
+                yield Static(i18n.t("exam_paper", questions=st["questions"]))
+                if st["topup"] > 0:
+                    yield Static(
+                        i18n.t(
+                            "exam_topup",
+                            topup=st["topup"],
+                            related=", ".join(st["related"]),
+                        )
+                    )
             yield Button(i18n.t("back_home"), id="home")
         yield Footer()
 

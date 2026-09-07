@@ -5,6 +5,11 @@ all packs of one skill. It is graded like a normal session; scoring >= PASS_RATI
 certifies the player at the *target level* for that skill (the next difficulty
 tier above their current certification, capped at the skill's hardest challenge).
 Re-taking and passing raises the certified level — durable, demonstrable mastery.
+
+Cross-pack pools: a skill with fewer than EXAM_SIZE own challenges (a thin pack)
+tops its exam up from curated related skills' packs (RELATED_SKILLS). Own
+challenges always come first and dominate the paper; related fill prefers the
+target tier, and attempts still attribute to each challenge's real skill.
 """
 
 from __future__ import annotations
@@ -18,9 +23,44 @@ from . import progress as pm
 EXAM_SIZE = 20
 PASS_RATIO = 0.9  # >= 90% correct certifies the attempted level
 
+# Curated relatedness (not inferred): which skills' packs may top up a thin
+# exam pool, in preference order. Skills absent here (sql, regex) keep their
+# full-pool mixed exam — their own content is deep enough to stand alone.
+RELATED_SKILLS: dict[str, tuple[str, ...]] = {
+    "python": ("javascript",),
+    "javascript": ("python",),  # fix-bug-js mirrors fix-bug debugging skills
+    "algorithms": ("python",),  # algorithms packs are python code
+    "git": ("shell",),  # git challenges are terminal work; shell fluency is adjacent
+    "shell": ("git",),
+    "css": ("http",),  # both web-platform families
+    "http": ("css",),
+}
+
 
 def skill_packs(packs: list, skill: str) -> list:
     return [p for p in packs if getattr(p, "skill", None) == skill]
+
+
+def related_skills(skill: str) -> tuple[str, ...]:
+    """Skills whose packs may top up a thin exam pool for `skill` (curated)."""
+    return RELATED_SKILLS.get(skill, ())
+
+
+def exam_pool(packs: list, skill: str) -> tuple[list, list]:
+    """Challenges available to a skill's exam: `(own, related)`.
+
+    `own` is every challenge from packs of `skill`; `related` is the pool from
+    related skills' packs (RELATED_SKILLS order), consulted only when `own` is
+    thinner than EXAM_SIZE.
+    """
+    by_skill: dict[str, list] = {}
+    for p in packs:
+        by_skill.setdefault(getattr(p, "skill", None) or p.id, []).extend(p.challenges)
+    own = by_skill.get(skill, [])
+    related: list = []
+    for rel in related_skills(skill):
+        related.extend(by_skill.get(rel, []))
+    return own, related
 
 
 def _target_level(challenges: list, current: int) -> int:
@@ -38,22 +78,32 @@ def build_exam(
 ) -> engine.Session | None:
     """Build a randomized mastery-exam session for `skill`, or None if no content."""
     packs = packs or loader.load_all_packs()
-    pk = skill_packs(packs, skill)
-    challenges = [c for p in pk for c in p.challenges]
-    if not challenges:
+    own, related = exam_pool(packs, skill)
+    if not own:
         return None
     rng = rng or random.Random()
     current = int(progress.get("certifications", {}).get(skill, {}).get("level", 0))
-    target = _target_level(challenges, current)
+    target = _target_level(own, current)
 
     # Weight toward the target difficulty so the exam actually tests that tier,
     # but fall back to the full pool if a tier is thin.
-    pool = [c for c in challenges if getattr(c, "difficulty", 1) == target] or challenges
+    pool = [c for c in own if getattr(c, "difficulty", 1) == target] or own
     picked = rng.sample(pool, min(size, len(pool)))
     # A mixed exam: top up with a spread of other difficulties if room remains.
-    remaining = [c for c in challenges if c not in picked]
-    while len(picked) < min(size, len(challenges)) and remaining:
+    remaining = [c for c in own if c not in picked]
+    while len(picked) < size and remaining:
         picked.append(remaining.pop(rng.randrange(len(remaining))))
+
+    # Cross-pack pools: thin skills (< `size` own challenges) top up from
+    # related skills' packs. Own challenges always come first; related fill
+    # prefers the target tier so the exam stays calibrated at the graded level.
+    if len(picked) < size and related:
+        rest = [c for c in related if c not in picked]
+        near = [c for c in rest if getattr(c, "difficulty", 1) == target]
+        far = [c for c in rest if getattr(c, "difficulty", 1) != target]
+        rng.shuffle(near)
+        rng.shuffle(far)
+        picked.extend((near + far)[: size - len(picked)])
     rng.shuffle(picked)
 
     session = engine.Session(skill, picked)
@@ -100,13 +150,14 @@ def certify(session: engine.Session, progress: dict[str, Any]) -> dict[str, Any]
 def exam_status(progress: dict[str, Any], packs: list | None = None) -> list[dict[str, Any]]:
     """Per-skill certification summary for display (no side effects)."""
     packs = packs or loader.load_all_packs()
-    skills: dict[str, list] = {}
-    for p in packs:
-        skills.setdefault(getattr(p, "skill", None) or p.id, []).append(p)
+    names = sorted({getattr(p, "skill", None) or p.id for p in packs})
     out: list[dict[str, Any]] = []
-    for skill, group in sorted(skills.items()):
-        challenges = [c for p in group for c in p.challenges]
-        max_d = max((getattr(c, "difficulty", 1) for c in challenges), default=1)
+    for skill in names:
+        pool_own, pool_rel = exam_pool(packs, skill)
+        if not pool_own:
+            continue
+        max_d = max((getattr(c, "difficulty", 1) for c in pool_own), default=1)
+        topup = min(EXAM_SIZE - len(pool_own), len(pool_rel)) if len(pool_own) < EXAM_SIZE else 0
         rec = progress.get("certifications", {}).get(skill, {})
         out.append(
             {
@@ -117,6 +168,9 @@ def exam_status(progress: dict[str, Any], packs: list | None = None) -> list[dic
                 "exams_passed": int(rec.get("exams_passed", 0)),
                 "last_date": rec.get("last_date", ""),
                 "next_target": min(int(rec.get("level", 0)) + 1, max_d) or 1,
+                "questions": len(pool_own) + topup,
+                "topup": topup,
+                "related": list(related_skills(skill)),
             }
         )
     return out

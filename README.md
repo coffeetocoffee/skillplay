@@ -89,6 +89,8 @@ skillplay context --file app.py        # suggest a pack for the file you're edit
   **skill graph** unlocks challenge frontiers as prerequisites are passed.
 - **Mastery exams** (V6): take a randomized, mixed exam per skill — score ≥ 90%
   to certify the next difficulty level. A real learning metric, not just XP.
+  Thin skills top their exam up from related skills' packs, so every paper is
+  a full ~20 questions (own challenges always come first).
 - **Capstone packs** (e.g. `mini-cli`) chain challenges that build one real
   artifact; your solutions are assembled into a portfolio file on disk.
 - Daily challenge, achievements, curated goals, and a crash-safe session
